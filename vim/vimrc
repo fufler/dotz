@@ -56,6 +56,7 @@ set nowrap                                                       " do not wrap l
 set tabstop=4                                                    " use 4 spaces per tab for auto and manual indentation
 set shiftwidth=0
 set shiftround
+set expandtab
 set foldmethod=indent                                            " use indentation based folding
 set foldlevelstart=99                                            " do not fold by default
 
