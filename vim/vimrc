@@ -1,0 +1,177 @@
+" ====================== GENERAL SETTINGS ======================
+set nocompatible                                                 " be iMproved
+set mouse=a                                                      " use mouse
+set backup                                                       " store backups in separate folder
+set backupdir=~/.vim/backup/
+set directory=~/.vim/swap/                                       " store swap files in separate directory
+set suffixes+=.png,.gif,.jpg,.jpeg,.ico,.gz,.tgz,.zip            " ignore binary files wheh completing
+set shortmess+=I                                                 " disable startup message
+
+
+" ========================== PLUGINS  ==========================
+set rtp+=~/.vim/bundle/vundle/                                   " adjust runtime path
+call vundle#rc()                                                 " initialize vundle
+
+" List of plugins to be loaded:
+"
+" EasyMotion     — faster navigation
+" Airline        — fancy status line
+" Ctrl+P         — quickly open files and switch tabs
+" Alternate      — easily switch between source and header files
+" NERDTree       — directory structure browser
+" YouCompleteMe  — clang-enabed autocompletion
+" LatexSuite     — latex utils
+" Syntastic      — on-the-fly syntax checking
+" Git Gutter     — show git diff on the sign column
+" Summerfruit256 — fresh color scheme
+" Fugitive       — git wrappings
+
+Bundle 'gmarik/vundle.git'
+Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'kien/ctrlp.vim'
+Bundle 'a.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'jcf/vim-latex'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'summerfruit256.vim'
+Bundle 'tpope/vim-fugitive'
+
+
+" ========================== ENCODINGS =========================
+set encoding=utf-8                                               " default encoding
+set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r          " list of encodings to try when starting to edit a file
+
+
+" ====================== EDITOR SETTINGS =======================
+syntax enable                                                    " highlight syntax
+set autoread                                                     " automatically reload modified files
+set autoindent                                                   " inherit previous line indentation
+set smartindent                                                  " use indentation basing on file syntax
+set showmatch                                                    " show matchings
+set matchpairs+=<:>                                              " show matching pairs for XML tags
+set nowrap                                                       " do not wrap lines
+set tabstop=4                                                    " use 4 spaces per tab for auto and manual indentation
+set shiftwidth=0
+set shiftround
+set foldmethod=indent                                            " use indentation based folding
+set foldlevelstart=99                                            " do not fold by default
+
+
+" ========================= APPEARANCE =========================
+set t_Co=256                                                     " use 256 colors
+colorscheme summerfruit256                                       " use custom colorscheme
+set background=light
+hi! link SignColumn LineNr
+hi! link GitGutterAdd LineNr
+hi! link GitGutterChange LineNr
+hi! link GitGutterDelete LineNr
+hi! Pmenu ctermbg=194 ctermfg=black
+set colorcolumn=120                                              " colored margin
+set number                                                       " show line numbers with 3 characters width
+set numberwidth=3
+set showtabline=0                                                " do not show opened tabs
+set laststatus=2                                                 " show status line
+set noshowmode                                                   " disable default mode indication
+
+
+" ======================== KEY BINDINGS ========================
+set langmap=ЬM,Б<,Ю>,Ё~,
+set langmap+=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,    " fix to use russian symbols
+set langmap+=рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,      " in non-insert modes
+set langmap+=ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,
+set langmap+=ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN
+set pastetoggle=<C-P><C-P>                                       " hot key to toggle paste mode
+let g:EasyMotion_leader_key='<C-e><C-e>'                         " use Ctrl+e Ctrl+e as leader key for EasyMotion
+nmap <C-P><C-P> :CtrlPBuffer<CR>
+nmap <C-T><C-T> :NERDTreeToggle<CR>
+nmap <C-G>d     :call JumpToDefinitionElseDeclaration()<CR>
+
+
+" =========================== SEARCH ===========================
+set incsearch                                                    " use incremental search
+set hlsearch                                                     " highlight search results
+set ignorecase                                                   " ignore case while searching if string is lowercase
+set smartcase
+
+" ======================== SPELL CHECKER =======================
+setlocal spell spelllang=ru_ru,en_us                             " use spellchecker for russian and english, but disable by default
+set nospell
+
+
+" ====================== HELPER FUNCTIONS ======================
+function ModeChange()                                            " if first line of a file seems to be an interpreter name
+  if getline(1) =~ "^#!.*/bin/"                                  " then set  +x flag on the file
+    silent !chmod a+x <afile>
+  endif
+endfunction
+
+function JumpToDefinitionElseDeclaration()                       " simple wrapper for Ycm function that prevents
+  if getbufvar(bufname(winbufnr(0)), '&modified')                " displaying of error message due to unsaved buffer
+  echoerr "Please, save changes before jumping."
+  else
+  YcmCompleter GoToeclarationElse
+  endif
+endfunction
+
+
+" ====================== EVENT CALLBACKS =======================
+au BufWritePost * call ModeChange()                              " adjust flags for script files on save
+
+
+" ===================== YCM CONFIGURATION  =====================
+let g:ycm_confirm_extra_conf = 0                                 " do not confirm extra config loading
+
+
+" =================== AIRLINE CONFIGURATION  ===================
+function! l:GenColors(s1, s2)
+  return {
+      \ 'airline_a'              : [ a:s1[0] , a:s1[1] , a:s1[2] , a:s1[3] , get(a:s1 , 4 , 'bold') ],
+      \ 'airline_b'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_c'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_file'           : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_x'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_y'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_z'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_warning'        : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ]
+      \ }
+endfunction
+
+
+let s:S1N = ['', '', 16, 255, 'bold']
+let s:S1I = ['', '', 16, 12,  'bold']
+let s:S1R = ['', '', 16, 9,   '']
+let s:S1V = ['', '', 16, 11,  '']
+let s:S2  = ['', '', 16, 255, '']
+
+let g:airline#themes#summerfruit#palette = {
+  \ 'normal'           : l:GenColors(s:S1N, s:S2),
+  \ 'insert'           : l:GenColors(s:S1I, s:S2),
+  \ 'visual'           : l:GenColors(s:S1V, s:S2),
+  \ 'replace'          : l:GenColors(s:S1R, s:S2),
+  \ 'inactive'         : l:GenColors(s:S1R, s:S2),
+  \ 'normal_modified'  : l:GenColors(s:S1N, s:S2),
+  \ 'insert_modified'  : l:GenColors(s:S1I, s:S2),
+  \ 'visual_modified'  : l:GenColors(s:S1V, s:S2),
+  \ 'replace_modified' : l:GenColors(s:S1R, s:S2),
+  \ 'inactive_modified': l:GenColors(s:S1R, s:S2)
+  \ }
+
+let g:airline#themes#summerfruit#palette.normal_modified.airline_c   = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.insert_modified.airline_c   = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.visual_modified.airline_c   = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.replace_modified.airline_c  = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.inactive_modified.airline_c = [ '', '', 34, '', '' ]
+
+
+
+let g:airline_theme='summerfruit'                                " airline colorscheme
+let g:airline#extensions#syntastic#enabled = 1                   " enable syntastic integration for airline
+let g:airline#extensions#tabline#enabled = 1                     " enable wrapped tabline
+let g:airline_symbols = {}                                       " disable status line symbols
+
+" ================== SYNTASTIC CONFIGURATION  ==================
+let g:syntastic_enable_signs=0
+let g:syntastic_enable_highlighting = 1

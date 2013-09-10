@@ -21,3 +21,14 @@ mkdir -p "$HOME/.local/share/mc/skins"
 for sfile in mc/skins/*.ini(.N); do
   sln "$DIR/$sfile" "$HOME/.local/share/mc/skins/${sfile:t}";
 done
+
+sln "$DIR/vim/vimrc" "$HOME/.vimrc"
+mkdir -p "$HOME/.vim/bundle"
+sln "$DIR/vim/spell" "$HOME/.vim/spell"
+git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
+vim +BundleInstall +wqa
+cd "$HOME/.vim/bundle/YouCompleteMe"
+mkdir build
+cd build
+cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON  . ../cpp
+make ycm_core
