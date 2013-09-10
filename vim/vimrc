@@ -102,7 +102,7 @@ setlocal spell spelllang=ru_ru,en_us                             " use spellchec
 set nospell
 
 
-" ====================== HELPER FUNCTIONS ======================
+" =============== HELPER FUNCTIONS AND COMMANDS ================
 function ModeChange()                                            " if first line of a file seems to be an interpreter name
   if getline(1) =~ "^#!.*/bin/"                                  " then set  +x flag on the file
     silent !chmod a+x <afile>
@@ -110,12 +110,18 @@ function ModeChange()                                            " if first line
 endfunction
 
 function JumpToDefinitionElseDeclaration()                       " simple wrapper for Ycm function that prevents
-  if getbufvar(bufname(winbufnr(0)), '&modified')                " displaying of error message due to unsaved buffer
-  echoerr "Please, save changes before jumping."
-  else
-  YcmCompleter GoToeclarationElse
-  endif
+    if getbufvar(bufname(winbufnr(0)), '&modified')                " displaying of error message due to unsaved buffer
+        echoerr "Please, save changes before jumping."
+    else
+        YcmCompleter GoToeclarationElse
+    endif
 endfunction
+
+function RemoveTrailingWhitespace()                                              " removes trailing whitespaces
+    %s/[ \t]*$//g
+endfunction
+
+command RemoveTWS :call RemoveTrailingWhitespace()
 
 
 " ====================== EVENT CALLBACKS =======================
