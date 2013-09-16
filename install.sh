@@ -32,3 +32,5 @@ mkdir build
 cd build
 cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON  . ../cpp
 make ycm_core
+
+sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
