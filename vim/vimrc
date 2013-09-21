@@ -6,7 +6,7 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/                                       " store swap files in separate directory
 set suffixes+=.png,.gif,.jpg,.jpeg,.ico,.gz,.tgz,.zip            " ignore binary files wheh completing
 set shortmess+=I                                                 " disable startup message
-
+filetype plugin on                                               " load plugins basing on file type
 
 " ========================== PLUGINS  ==========================
 set rtp+=~/.vim/bundle/vundle/                                   " adjust runtime path
@@ -19,12 +19,15 @@ call vundle#rc()                                                 " initialize vu
 " Ctrl+P         — quickly open files and switch tabs
 " Alternate      — easily switch between source and header files
 " NERDTree       — directory structure browser
+" NERDCommenter  — easy commenting
 " YouCompleteMe  — clang-enabed autocompletion
 " LatexSuite     — latex utils
 " Syntastic      — on-the-fly syntax checking
 " Git Gutter     — show git diff on the sign column
 " Summerfruit256 — fresh color scheme
 " Fugitive       — git wrappings
+" XML Edit       — xml tags autocompletion
+" Unicodeswitch  — automatically convert Java properties files to ASCII
 
 Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
@@ -32,12 +35,15 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'a.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'jcf/vim-latex'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'summerfruit256.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'sukima/xmledit'
+Bundle 'fufler/vim-unicodeswitch'
 
 
 " ========================== ENCODINGS =========================
@@ -182,3 +188,6 @@ let g:airline_symbols = {}                                       " disable statu
 " ================== SYNTASTIC CONFIGURATION  ==================
 let g:syntastic_enable_signs=0
 let g:syntastic_enable_highlighting = 1
+
+" ================ UNICODESWITCH CONFIGURATION  ================
+let g:ucs_encode_java = 1
