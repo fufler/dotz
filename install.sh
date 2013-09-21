@@ -11,7 +11,12 @@ for rcfile in prezto/runcoms/^README.md(.N); do
   sln "$DIR/$rcfile" "$HOME/.${rcfile:t}"
 done
 
-sln "$DIR/zsh" "$HOME/.zsh"
+
+mkdir -p "$HOME/.zsh"
+for file in zsh/*(.N); do
+  sln "$DIR/$file" "$HOME/.zsh/${file:t}"
+done
+
 sln "$DIR/prezto" "$HOME/.zprezto"
 
 mkdir -p "$HOME/.config/mc"
