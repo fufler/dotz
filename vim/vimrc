@@ -28,6 +28,8 @@ call vundle#rc()                                                 " initialize vu
 " Fugitive       — git wrappings
 " XML Edit       — xml tags autocompletion
 " Unicodeswitch  — automatically convert Java properties files to ASCII
+" FTL vim syntax — syntax highlighting for Freemarker template files
+" Monokai        — dark colorscheme
 
 Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
@@ -44,6 +46,8 @@ Bundle 'summerfruit256.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'sukima/xmledit'
 Bundle 'fufler/vim-unicodeswitch'
+Bundle 'chaquotay/ftl-vim-syntax'
+Bundle 'sickill/vim-monokai'
 
 
 " ========================== ENCODINGS =========================
@@ -69,8 +73,10 @@ set foldlevelstart=99                                            " do not fold b
 
 " ========================= APPEARANCE =========================
 set t_Co=256                                                     " use 256 colors
-colorscheme summerfruit256                                       " use custom colorscheme
-set background=light
+" colorscheme summerfruit256                                       " use custom colorscheme
+" set background=light
+colorscheme monokai                                              " use custom colorscheme
+set background=dark
 hi! link SignColumn LineNr
 hi! link GitGutterAdd LineNr
 hi! link GitGutterChange LineNr
