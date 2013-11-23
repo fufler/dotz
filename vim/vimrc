@@ -73,10 +73,10 @@ set foldlevelstart=99                                            " do not fold b
 
 " ========================= APPEARANCE =========================
 set t_Co=256                                                     " use 256 colors
-" colorscheme summerfruit256                                       " use custom colorscheme
-" set background=light
-colorscheme monokai                                              " use custom colorscheme
-set background=dark
+colorscheme summerfruit256                                       " use custom colorscheme
+set background=light
+" colorscheme monokai                                              " use custom colorscheme
+" set background=dark
 hi! link SignColumn LineNr
 hi! link GitGutterAdd LineNr
 hi! link GitGutterChange LineNr
