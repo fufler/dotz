@@ -1,6 +1,3 @@
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/fufler/prezto.git
-[submodule "gdbinit"]
-	path = gdbinit
-	url = https://github.com/fufler/Gdbinit.git
