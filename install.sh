@@ -39,5 +39,6 @@ cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON  . ../cpp
 make ycm_core
 
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
+sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
 
 sln "$DIR/ipython/ipython_config.py" "$HOME/.config/ipython/profile_default/ipython_config.py"
