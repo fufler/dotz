@@ -59,7 +59,7 @@ pprint_xml() {
 }
 
 proxify() {
-	ssh -fND 1080 git.itdhq.com
+	ssh -fND 1080 fufler@elite.bshellz.net
 	proxychains $@
 	kill -9 $( ps ax | grep 'ssh -fND 1080' | head -n1 | awk '{ print $1 }' )
 }
