@@ -1,0 +1,6 @@
+termcapinfo * ti@:te@ 
+termcapinfo * 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= .g}[ %{k}%H %{g}][%= %{= .k}%?%-Lw%?%{r}(%{k}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{k} %c %{g}]'
+startup_message off
