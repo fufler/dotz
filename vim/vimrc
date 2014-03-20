@@ -30,14 +30,12 @@ call vundle#rc()                                                 " initialize vu
 " Unicodeswitch  — automatically convert Java properties files to ASCII
 " FTL vim syntax — syntax highlighting for Freemarker template files
 " Monokai        — dark colorscheme
-" Zenburn        — another one dark coloscheme
 
 Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'a.vim'
-Bundle 'jnurmine/Zenburn'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Valloric/YouCompleteMe'
@@ -75,7 +73,10 @@ set foldlevelstart=99                                            " do not fold b
 
 " ========================= APPEARANCE =========================
 set t_Co=256                                                     " use 256 colors
-colorscheme zenburn                                              " use custom colorscheme
+colorscheme summerfruit256                                       " use custom colorscheme
+set background=light
+" colorscheme monokai                                              " use custom colorscheme
+" set background=dark
 hi! link SignColumn LineNr
 hi! link GitGutterAdd LineNr
 hi! link GitGutterChange LineNr
@@ -144,48 +145,48 @@ let g:ycm_confirm_extra_conf = 0                                 " do not confir
 
 
 " =================== AIRLINE CONFIGURATION  ===================
-"function! l:GenColors(s1, s2)
-"  return {
-"      \ 'airline_a'              : [ a:s1[0] , a:s1[1] , a:s1[2] , a:s1[3] , get(a:s1 , 4 , 'bold') ],
-"      \ 'airline_b'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-"      \ 'airline_c'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-"      \ 'airline_file'           : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-"      \ 'airline_x'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-"      \ 'airline_y'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-"      \ 'airline_z'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-"      \ 'airline_warning'        : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ]
-"      \ }
-"endfunction
-"
-"
-"let s:S1N = ['', '', 16, 255, 'bold']
-"let s:S1I = ['', '', 16, 12,  'bold']
-"let s:S1R = ['', '', 16, 9,   '']
-"let s:S1V = ['', '', 16, 11,  '']
-"let s:S2  = ['', '', 16, 255, '']
-"
-"let g:airline#themes#summerfruit#palette = {
-"  \ 'normal'           : l:GenColors(s:S1N, s:S2),
-"  \ 'insert'           : l:GenColors(s:S1I, s:S2),
-"  \ 'visual'           : l:GenColors(s:S1V, s:S2),
-"  \ 'replace'          : l:GenColors(s:S1R, s:S2),
-"  \ 'inactive'         : l:GenColors(s:S1R, s:S2),
-"  \ 'normal_modified'  : l:GenColors(s:S1N, s:S2),
-"  \ 'insert_modified'  : l:GenColors(s:S1I, s:S2),
-"  \ 'visual_modified'  : l:GenColors(s:S1V, s:S2),
-"  \ 'replace_modified' : l:GenColors(s:S1R, s:S2),
-"  \ 'inactive_modified': l:GenColors(s:S1R, s:S2)
-"  \ }
-"
-"let g:airline#themes#summerfruit#palette.normal_modified.airline_c   = [ '', '', 34, '', '' ]
-"let g:airline#themes#summerfruit#palette.insert_modified.airline_c   = [ '', '', 34, '', '' ]
-"let g:airline#themes#summerfruit#palette.visual_modified.airline_c   = [ '', '', 34, '', '' ]
-"let g:airline#themes#summerfruit#palette.replace_modified.airline_c  = [ '', '', 34, '', '' ]
-"let g:airline#themes#summerfruit#palette.inactive_modified.airline_c = [ '', '', 34, '', '' ]
-"
-"
-"
-"let g:airline_theme='summerfruit'                                " airline colorscheme
+function! l:GenColors(s1, s2)
+  return {
+      \ 'airline_a'              : [ a:s1[0] , a:s1[1] , a:s1[2] , a:s1[3] , get(a:s1 , 4 , 'bold') ],
+      \ 'airline_b'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_c'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_file'           : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_x'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_y'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_z'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
+      \ 'airline_warning'        : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ]
+      \ }
+endfunction
+
+
+let s:S1N = ['', '', 16, 255, 'bold']
+let s:S1I = ['', '', 16, 12,  'bold']
+let s:S1R = ['', '', 16, 9,   '']
+let s:S1V = ['', '', 16, 11,  '']
+let s:S2  = ['', '', 16, 255, '']
+
+let g:airline#themes#summerfruit#palette = {
+  \ 'normal'           : l:GenColors(s:S1N, s:S2),
+  \ 'insert'           : l:GenColors(s:S1I, s:S2),
+  \ 'visual'           : l:GenColors(s:S1V, s:S2),
+  \ 'replace'          : l:GenColors(s:S1R, s:S2),
+  \ 'inactive'         : l:GenColors(s:S1R, s:S2),
+  \ 'normal_modified'  : l:GenColors(s:S1N, s:S2),
+  \ 'insert_modified'  : l:GenColors(s:S1I, s:S2),
+  \ 'visual_modified'  : l:GenColors(s:S1V, s:S2),
+  \ 'replace_modified' : l:GenColors(s:S1R, s:S2),
+  \ 'inactive_modified': l:GenColors(s:S1R, s:S2)
+  \ }
+
+let g:airline#themes#summerfruit#palette.normal_modified.airline_c   = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.insert_modified.airline_c   = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.visual_modified.airline_c   = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.replace_modified.airline_c  = [ '', '', 34, '', '' ]
+let g:airline#themes#summerfruit#palette.inactive_modified.airline_c = [ '', '', 34, '', '' ]
+
+
+
+let g:airline_theme='summerfruit'                                " airline colorscheme
 let g:airline#extensions#syntastic#enabled = 1                   " enable syntastic integration for airline
 let g:airline#extensions#tabline#enabled = 1                     " enable wrapped tabline
 let g:airline_symbols = {}                                       " disable status line symbols
