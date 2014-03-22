@@ -5,6 +5,7 @@ set backup                                                       " store backups
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/                                       " store swap files in separate directory
 set suffixes+=.png,.gif,.jpg,.jpeg,.ico,.gz,.tgz,.zip            " ignore binary files wheh completing
+set wildignore+=*/build/*,*.so,*.swp,*.zip,*.o                   " ignore binary files when expanding wildcards
 set shortmess+=I                                                 " disable startup message
 filetype plugin on                                               " load plugins basing on file type
 
@@ -75,8 +76,6 @@ set foldlevelstart=99                                            " do not fold b
 set t_Co=256                                                     " use 256 colors
 colorscheme summerfruit256                                       " use custom colorscheme
 set background=light
-" colorscheme monokai                                              " use custom colorscheme
-" set background=dark
 hi! link SignColumn LineNr
 hi! link GitGutterAdd LineNr
 hi! link GitGutterChange LineNr
@@ -122,18 +121,24 @@ function ModeChange()                                            " if first line
 endfunction
 
 function JumpToDefinitionElseDeclaration()                       " simple wrapper for Ycm function that prevents
-    if getbufvar(bufname(winbufnr(0)), '&modified')                " displaying of error message due to unsaved buffer
+    if getbufvar(bufname(winbufnr(0)), '&modified')              " displaying of error message due to unsaved buffer
         echoerr "Please, save changes before jumping."
     else
         YcmCompleter GoToeclarationElse
     endif
 endfunction
 
-function RemoveTrailingWhitespace()                                              " removes trailing whitespaces
+function RemoveTrailingWhitespace()                              " removes trailing whitespaces
     %s/[ \t]*$//g
 endfunction
 
+function CompileAndRun()                                         " compiles current file and executes it
+    w! /tmp/code_to_run.cpp
+    !g++ /tmp/code_to_run.cpp -o /tmp/a.out && /tmp/a.out
+endfunction
+
 command RemoveTWS :call RemoveTrailingWhitespace()
+command CompileAndRun :call CompileAndRun()
 
 
 " ====================== EVENT CALLBACKS =======================
@@ -197,3 +202,10 @@ let g:syntastic_enable_highlighting = 1
 
 " ================ UNICODESWITCH CONFIGURATION  ================
 let g:ucs_encode_java = 1
+
+" ===================== MAKE CONFIGURATION =====================
+if filereadable('/proc/cpuinfo')                                " adjust number of parallel build jobs
+    let s:njobs = system('grep -c ^processor /proc/cpuinfo')+1
+    let &makeprg = 'make -j'.s:njobs
+endif
+
