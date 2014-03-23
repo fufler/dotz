@@ -80,7 +80,7 @@ hi! link SignColumn LineNr
 hi! link GitGutterAdd LineNr
 hi! link GitGutterChange LineNr
 hi! link GitGutterDelete LineNr
-hi! Pmenu ctermbg=194 ctermfg=black
+hi! Pmenu ctermbg=194 ctermfg=black guibg=#d7ffd7 guifg=black
 set colorcolumn=120                                              " colored margin
 set number                                                       " show line numbers with 3 characters width
 set numberwidth=3
