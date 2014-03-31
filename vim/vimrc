@@ -31,6 +31,8 @@ call vundle#rc()                                                 " initialize vu
 " Unicodeswitch  — automatically convert Java properties files to ASCII
 " FTL vim syntax — syntax highlighting for Freemarker template files
 " Monokai        — dark colorscheme
+" vim-misc       — vim-session dependency
+" vim-session    — a handy plugin to manage sessions
 
 Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
@@ -49,6 +51,8 @@ Bundle 'sukima/xmledit'
 Bundle 'fufler/vim-unicodeswitch'
 Bundle 'chaquotay/ftl-vim-syntax'
 Bundle 'sickill/vim-monokai'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
 
 
 " ========================== ENCODINGS =========================
