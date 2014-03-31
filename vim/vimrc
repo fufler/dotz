@@ -74,6 +74,7 @@ set shiftround
 set expandtab
 set foldmethod=indent                                            " use indentation based folding
 set foldlevelstart=99                                            " do not fold by default
+set hidden                                                       " do not unload buffer on hide
 
 
 " ========================= APPEARANCE =========================
