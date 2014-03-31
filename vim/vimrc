@@ -134,11 +134,20 @@ endfunction
 
 function CompileAndRun()                                         " compiles current file and executes it
     w! /tmp/code_to_run.cpp
-    !g++ /tmp/code_to_run.cpp -o /tmp/a.out && /tmp/a.out
+    !g++ /tmp/code_to_run.cpp -std=c++11 -o /tmp/a.out && /tmp/a.out
+endfunction
+
+function! s:insert_gates()                                       " inserts header file gate
+    let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+    execute "normal! i#ifndef " . gatename
+    execute "normal! o#define " . gatename . " "
+    execute "normal! Go#endif /* " . gatename . " */"
+    normal! kk
 endfunction
 
 command RemoveTWS :call RemoveTrailingWhitespace()
 command CompileAndRun :call CompileAndRun()
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 
 " ====================== EVENT CALLBACKS =======================
