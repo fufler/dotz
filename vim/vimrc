@@ -151,8 +151,9 @@ endfunction
 
 command RemoveTWS :call RemoveTrailingWhitespace()
 command CompileAndRun :call CompileAndRun()
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+autocmd BufNewFile,BufRead wscript set syntax=python
 
 " ====================== EVENT CALLBACKS =======================
 au BufWritePost * call ModeChange()                              " adjust flags for script files on save
