@@ -105,8 +105,9 @@ set pastetoggle=<C-P><C-P>                                       " hot key to to
 let g:EasyMotion_leader_key='<C-e><C-e>'                         " use Ctrl+e Ctrl+e as leader key for EasyMotion
 nmap <C-P><C-P> :CtrlPBuffer<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
-nmap <C-G>d     :call JumpToDefinitionElseDeclaration()<CR>
+nmap <Leader>jd :YcmCompleter GoTo<CR>
 nmap <C-D><C-D> :Dox<CR>
+imap <C-D><C-D> <Esc>:Dox<CR>
 
 
 " =========================== SEARCH ===========================
