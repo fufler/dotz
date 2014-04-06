@@ -33,6 +33,7 @@ call vundle#rc()                                                 " initialize vu
 " Monokai        — dark colorscheme
 " vim-misc       — vim-session dependency
 " vim-session    — a handy plugin to manage sessions
+" DoxygenToolkit — doxygen comments support
 
 Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
@@ -53,7 +54,7 @@ Bundle 'chaquotay/ftl-vim-syntax'
 Bundle 'sickill/vim-monokai'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
-
+Bundle 'vim-scripts/DoxygenToolkit.vim'
 
 " ========================== ENCODINGS =========================
 set encoding=utf-8                                               " default encoding
@@ -64,7 +65,7 @@ set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r          " list of encod
 syntax enable                                                    " highlight syntax
 set autoread                                                     " automatically reload modified files
 set autoindent                                                   " inherit previous line indentation
-set smartindent                                                  " use indentation basing on file syntax
+set cindent                                                      " use c-style indentation
 set showmatch                                                    " show matchings
 set matchpairs+=<:>                                              " show matching pairs for XML tags
 set nowrap                                                       " do not wrap lines
@@ -105,6 +106,7 @@ let g:EasyMotion_leader_key='<C-e><C-e>'                         " use Ctrl+e Ct
 nmap <C-P><C-P> :CtrlPBuffer<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
 nmap <C-G>d     :call JumpToDefinitionElseDeclaration()<CR>
+nmap <C-D><C-D> :Dox<CR>
 
 
 " =========================== SEARCH ===========================
@@ -217,6 +219,9 @@ let g:syntastic_enable_highlighting = 1
 
 " ================ UNICODESWITCH CONFIGURATION  ================
 let g:ucs_encode_java = 1
+
+" =============== DOXYGEN TOOLKIT CONFIGURATION ================
+let g:DoxygenToolkit_briefTag_pre = ''                           " don't use @brief tag
 
 " ===================== MAKE CONFIGURATION =====================
 if filereadable('/proc/cpuinfo')                                " adjust number of parallel build jobs
