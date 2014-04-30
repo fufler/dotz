@@ -34,6 +34,8 @@ call vundle#rc()                                                 " initialize vu
 " vim-misc       — vim-session dependency
 " vim-session    — a handy plugin to manage sessions
 " DoxygenToolkit — doxygen comments support
+" FSwitch        — switches betwee header and implementation file
+" ProtoDef       — generates skeleton for c++ implementation file
 
 Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
@@ -55,6 +57,8 @@ Bundle 'sickill/vim-monokai'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
+Bundle 'derekwyatt/vim-fswitch'
+Bundle 'derekwyatt/vim-protodef'
 
 " ========================== ENCODINGS =========================
 set encoding=utf-8                                               " default encoding
