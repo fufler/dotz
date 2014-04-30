@@ -112,6 +112,7 @@ nmap <C-T><C-T> :NERDTreeToggle<CR>
 nmap <Leader>jd :YcmCompleter GoTo<CR>
 nmap <C-D><C-D> :Dox<CR>
 imap <C-D><C-D> <Esc>:Dox<CR>
+vmap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 
 
 " =========================== SEARCH ===========================
