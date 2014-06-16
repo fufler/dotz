@@ -6,8 +6,11 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/                                       " store swap files in separate directory
 set suffixes+=.png,.gif,.jpg,.jpeg,.ico,.gz,.tgz,.zip            " ignore binary files wheh completing
 set wildignore+=*/build/*,*.so,*.swp,*.zip,*.o,*.pyc             " ignore binary files when expanding wildcards
+set wildmode=list:full                                           " use regular shell-like autocompletion
 set shortmess+=I                                                 " disable startup message
 filetype plugin on                                               " load plugins basing on file type
+set exrc                                                         " enable secure load of external vimrc config
+set secure
 
 " ========================== PLUGINS  ==========================
 set rtp+=~/.vim/bundle/vundle/                                   " adjust runtime path
@@ -18,6 +21,7 @@ call vundle#rc()                                                 " initialize vu
 " EasyMotion     — faster navigation
 " Airline        — fancy status line
 " Ctrl+P         — quickly open files and switch tabs
+" Ctrl+P-Funky   — + jump to functions
 " Alternate      — easily switch between source and header files
 " NERDTree       — directory structure browser
 " NERDCommenter  — easy commenting
@@ -41,6 +45,7 @@ Bundle 'gmarik/vundle.git'
 Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
+Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'a.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -106,13 +111,18 @@ set langmap+=рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,      "
 set langmap+=ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,
 set langmap+=ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN
 set pastetoggle=<C-P><C-P>                                       " hot key to toggle paste mode
-let g:EasyMotion_leader_key='<C-e><C-e>'                         " use Ctrl+e Ctrl+e as leader key for EasyMotion
 nmap <C-P><C-P> :CtrlPBuffer<CR>
+nmap <C-G><C-G> :CtrlPFunky<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
 nmap <Leader>jd :YcmCompleter GoTo<CR>
 nmap <C-D><C-D> :Dox<CR>
 imap <C-D><C-D> <Esc>:Dox<CR>
 vmap <C-r> "hy:%s/<C-r>h//g<left><left><left>
+nmap <C-B> :call setqflist([])<CR>:make<CR>
+nmap <F2> :w<CR>
+nmap <F6> :cnext<CR>
+nmap <F7> :cprevious<CR>
+
 
 
 " =========================== SEARCH ===========================
@@ -147,7 +157,7 @@ endfunction
 
 function CompileAndRun()                                         " compiles current file and executes it
     w! /tmp/code_to_run.cpp
-    !g++ /tmp/code_to_run.cpp -std=c++11 -o /tmp/a.out && /tmp/a.out
+    !g++ /tmp/code_to_run.cpp -std=c++11 -Wall -o /tmp/a.out && /tmp/a.out
 endfunction
 
 function! s:insert_gates()                                       " inserts header file gate
@@ -173,7 +183,7 @@ let g:ycm_confirm_extra_conf = 0                                 " do not confir
 
 
 " =================== AIRLINE CONFIGURATION  ===================
-function! l:GenColors(s1, s2)
+function! s:GenColors(s1, s2)
   return {
       \ 'airline_a'              : [ a:s1[0] , a:s1[1] , a:s1[2] , a:s1[3] , get(a:s1 , 4 , 'bold') ],
       \ 'airline_b'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
@@ -194,16 +204,16 @@ let s:S1V = ['', '', 16, 11,  '']
 let s:S2  = ['', '', 16, 255, '']
 
 let g:airline#themes#summerfruit#palette = {
-  \ 'normal'           : l:GenColors(s:S1N, s:S2),
-  \ 'insert'           : l:GenColors(s:S1I, s:S2),
-  \ 'visual'           : l:GenColors(s:S1V, s:S2),
-  \ 'replace'          : l:GenColors(s:S1R, s:S2),
-  \ 'inactive'         : l:GenColors(s:S1R, s:S2),
-  \ 'normal_modified'  : l:GenColors(s:S1N, s:S2),
-  \ 'insert_modified'  : l:GenColors(s:S1I, s:S2),
-  \ 'visual_modified'  : l:GenColors(s:S1V, s:S2),
-  \ 'replace_modified' : l:GenColors(s:S1R, s:S2),
-  \ 'inactive_modified': l:GenColors(s:S1R, s:S2)
+  \ 'normal'           : s:GenColors(s:S1N, s:S2),
+  \ 'insert'           : s:GenColors(s:S1I, s:S2),
+  \ 'visual'           : s:GenColors(s:S1V, s:S2),
+  \ 'replace'          : s:GenColors(s:S1R, s:S2),
+  \ 'inactive'         : s:GenColors(s:S1R, s:S2),
+  \ 'normal_modified'  : s:GenColors(s:S1N, s:S2),
+  \ 'insert_modified'  : s:GenColors(s:S1I, s:S2),
+  \ 'visual_modified'  : s:GenColors(s:S1V, s:S2),
+  \ 'replace_modified' : s:GenColors(s:S1R, s:S2),
+  \ 'inactive_modified': s:GenColors(s:S1R, s:S2)
   \ }
 
 let g:airline#themes#summerfruit#palette.normal_modified.airline_c   = [ '', '', 34, '', '' ]
@@ -229,9 +239,18 @@ let g:ucs_encode_java = 1
 " =============== DOXYGEN TOOLKIT CONFIGURATION ================
 let g:DoxygenToolkit_briefTag_pre = ''                           " don't use @brief tag
 
+" =================== XML EDIT CONFIGURATION ===================
+let g:xmledit_enable_html=1                                      " enable xml tag completions for htmls
+
 " ===================== MAKE CONFIGURATION =====================
 if filereadable('/proc/cpuinfo')                                " adjust number of parallel build jobs
     let s:njobs = system('grep -c ^processor /proc/cpuinfo')+1
     let &makeprg = 'make -j'.s:njobs
 endif
 
+" =================== NERDTREE CONFIGURATION  ==================
+let NERDTreeIgnore = ['\.pyc$']                                 " Ignore compiled python files
+
+" ================== CTRLP/FUNKY CONFIGURATION  ================
+let g:ctrlp_extensions = ['funky']                              " Enable funky extension
+let g:ctrlp_funky_syntax_highlight = 1                          " Enable syntax highlight
