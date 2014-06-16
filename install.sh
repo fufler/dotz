@@ -42,6 +42,7 @@ make ycm_support_libs
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
 sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
 
+mkdir -p "$HOME/.config/ipython/profile_default"
 sln "$DIR/ipython/ipython_config.py" "$HOME/.config/ipython/profile_default/ipython_config.py"
 
 sln "$DIR/screen/screenrc" "$HOME/.screenrc"
