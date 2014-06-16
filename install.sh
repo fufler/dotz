@@ -35,9 +35,8 @@ vim +BundleInstall +wqa
 cd "$HOME/.vim/bundle/YouCompleteMe"
 mkdir build
 cd build
-#cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON  . ../cpp
-cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=OFF -DEXTERNAL_LIBCLANG_PATH=/usr/lib/libclang.so
-#make ycm_core
+cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=OFF -DEXTERNAL_LIBCLANG_PATH=/usr/lib/libclang.so ../third_party/ycmd/cpp
+make
 make ycm_support_libs
 
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
