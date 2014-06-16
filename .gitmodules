@@ -3,4 +3,4 @@
 	url = https://github.com/fufler/prezto.git
 [submodule "gdbinit"]
 	path = gdbinit
-	url = git@github.com:gdbinit/Gdbinit.git
+	url = https://github.com/gdbinit/Gdbinit.git
