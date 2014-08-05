@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+set -e
+
 sln() {
   ln -iTvs "$1" "$2"
 }
