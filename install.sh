@@ -29,6 +29,8 @@ done
 
 sln "$DIR/vim/vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.vim/bundle"
+mkdir -p "$HOME/.vim/swap"
+mkdir -p "$HOME/.vim/backup"
 sln "$DIR/vim/spell" "$HOME/.vim/spell"
 git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
 vim +BundleInstall +wqa
