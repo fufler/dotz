@@ -49,7 +49,7 @@ Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'a.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'jcf/vim-latex'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'airblade/vim-gitgutter'
@@ -102,6 +102,8 @@ set numberwidth=3
 set showtabline=0                                                " do not show opened tabs
 set laststatus=2                                                 " show status line
 set noshowmode                                                   " disable default mode indication
+set guifont=AnonymousPro\ 14
+
 
 
 " ======================== KEY BINDINGS ========================

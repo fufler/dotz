@@ -32,12 +32,13 @@ mkdir -p "$HOME/.vim/bundle"
 sln "$DIR/vim/spell" "$HOME/.vim/spell"
 git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
 vim +BundleInstall +wqa
-cd "$HOME/.vim/bundle/YouCompleteMe"
-mkdir build
-cd build
-cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=OFF -DEXTERNAL_LIBCLANG_PATH=/usr/lib/libclang.so ../third_party/ycmd/cpp
-make
-make ycm_support_libs
+
+#cd "$HOME/.vim/bundle/YouCompleteMe"
+#mkdir build
+#cd build
+#cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=OFF -DEXTERNAL_LIBCLANG_PATH=/usr/lib/libclang.so ../third_party/ycmd/cpp
+#make
+#make ycm_support_libs
 
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
 sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
