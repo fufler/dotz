@@ -50,7 +50,6 @@ Bundle 'sukima/xmledit'
 Bundle 'fufler/vim-unicodeswitch'
 " Syntax highlighting for Freemarker template files
 Bundle 'chaquotay/ftl-vim-syntax'
-Bundle 'sickill/vim-monokai'
 " A handy plugin to manage sessions
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
