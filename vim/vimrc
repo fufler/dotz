@@ -16,52 +16,47 @@ set secure
 set rtp+=~/.vim/bundle/vundle/                                   " adjust runtime path
 call vundle#rc()                                                 " initialize vundle
 
-" List of plugins to be loaded:
-"
-" EasyMotion     — faster navigation
-" Airline        — fancy status line
-" Ctrl+P         — quickly open files and switch tabs
-" Ctrl+P-Funky   — + jump to functions
-" Alternate      — easily switch between source and header files
-" NERDTree       — directory structure browser
-" NERDCommenter  — easy commenting
-" YouCompleteMe  — clang-enabed autocompletion
-" LatexSuite     — latex utils
-" Syntastic      — on-the-fly syntax checking
-" Git Gutter     — show git diff on the sign column
-" Summerfruit256 — fresh color scheme
-" Fugitive       — git wrappings
-" XML Edit       — xml tags autocompletion
-" Unicodeswitch  — automatically convert Java properties files to ASCII
-" FTL vim syntax — syntax highlighting for Freemarker template files
-" Monokai        — dark colorscheme
-" vim-misc       — vim-session dependency
-" vim-session    — a handy plugin to manage sessions
-" DoxygenToolkit — doxygen comments support
-" FSwitch        — switches betwee header and implementation file
-" ProtoDef       — generates skeleton for c++ implementation file
-
+" Package manager
 Bundle 'gmarik/vundle.git'
+" Fancy status line
 Bundle 'bling/vim-airline'
+" Faster navigation
 Bundle 'Lokaltog/vim-easymotion'
+" Quickly open files and switch tabs
 Bundle 'kien/ctrlp.vim'
+" Quickly jump to functions
 Bundle 'tacahiroy/ctrlp-funky'
+" Easily switch between source and header files
 Bundle 'a.vim'
+" Directory structure browser
 Bundle 'scrooloose/nerdtree'
+" Easy commenting
 Bundle 'scrooloose/nerdcommenter'
+" Clang-enabed autocompletion
 "Bundle 'Valloric/YouCompleteMe'
+" Latex utils
 Bundle 'jcf/vim-latex'
+" On-the-fly syntax checking
 Bundle 'scrooloose/syntastic.git'
+" Show git diff on the sign column
 Bundle 'airblade/vim-gitgutter'
+" Fresh color scheme
 Bundle 'summerfruit256.vim'
+" Git wrappings
 Bundle 'tpope/vim-fugitive'
+" XML tags autocompletion
 Bundle 'sukima/xmledit'
+" Automatically convert Java properties files to ASCII
 Bundle 'fufler/vim-unicodeswitch'
+" Syntax highlighting for Freemarker template files
 Bundle 'chaquotay/ftl-vim-syntax'
 Bundle 'sickill/vim-monokai'
+" A handy plugin to manage sessions
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+" Doxygen comments support
 Bundle 'vim-scripts/DoxygenToolkit.vim'
+" Generates skeleton for c++ implementation file
 Bundle 'derekwyatt/vim-fswitch'
 Bundle 'derekwyatt/vim-protodef'
 " Snippets support
