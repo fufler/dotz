@@ -64,6 +64,12 @@ Bundle 'xolox/vim-session'
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 Bundle 'derekwyatt/vim-fswitch'
 Bundle 'derekwyatt/vim-protodef'
+" Snippets support
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+
 
 " ========================== ENCODINGS =========================
 set encoding=utf-8                                               " default encoding
@@ -182,6 +188,8 @@ au BufWritePost * call ModeChange()                              " adjust flags 
 
 " ===================== YCM CONFIGURATION  =====================
 let g:ycm_confirm_extra_conf = 0                                 " do not confirm extra config loading
+let g:ycm_key_list_select_completion = []
+
 
 
 " =================== AIRLINE CONFIGURATION  ===================
