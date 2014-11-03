@@ -33,9 +33,13 @@ sln "$DIR/vim/vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.vim/bundle"
 mkdir -p "$HOME/.vim/swap"
 mkdir -p "$HOME/.vim/backup"
+mkdir -p "$HOME/.vim/snippets"
 sln "$DIR/vim/spell" "$HOME/.vim/spell"
 git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
 vim +BundleInstall +wqa
+sln "$DIR/vim/snipmate_for_django/snippets/htmldjango.snippets" "$HOME/.vim/snippets"
+sln "$DIR/vim/snipmate_for_django/snippets/django.snippets" "$HOME/.vim/snippets"
+"
 
 #cd "$HOME/.vim/bundle/YouCompleteMe"
 #mkdir build
