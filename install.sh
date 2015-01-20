@@ -37,9 +37,9 @@ mkdir -p "$HOME/.vim/snippets"
 sln "$DIR/vim/spell" "$HOME/.vim/spell"
 git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
 vim +BundleInstall +wqa
-sln "$DIR/vim/snipmate_for_django/snippets/htmldjango.snippets" "$HOME/.vim/snippets"
-sln "$DIR/vim/snipmate_for_django/snippets/django.snippets" "$HOME/.vim/snippets"
-"
+sln "$DIR/vim/snipmate_for_django/snippets/htmldjango.snippets" "$HOME/.vim/snippets/htmldjango.snippets"
+sln "$DIR/vim/snipmate_for_django/snippets/django.snippets" "$HOME/.vim/snippets/django.snippets"
+
 
 #cd "$HOME/.vim/bundle/YouCompleteMe"
 #mkdir build
@@ -55,3 +55,4 @@ mkdir -p "$HOME/.config/ipython/profile_default"
 sln "$DIR/ipython/ipython_config.py" "$HOME/.config/ipython/profile_default/ipython_config.py"
 
 sln "$DIR/screen/screenrc" "$HOME/.screenrc"
+sln "$DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
