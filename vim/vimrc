@@ -33,7 +33,7 @@ Bundle 'scrooloose/nerdtree'
 " Easy commenting
 Bundle 'scrooloose/nerdcommenter'
 " Clang-enabed autocompletion
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 " Latex utils
 Bundle 'jcf/vim-latex'
 " On-the-fly syntax checking

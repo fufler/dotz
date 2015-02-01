@@ -40,13 +40,8 @@ vim +BundleInstall +wqa
 sln "$DIR/vim/snipmate_for_django/snippets/htmldjango.snippets" "$HOME/.vim/snippets/htmldjango.snippets"
 sln "$DIR/vim/snipmate_for_django/snippets/django.snippets" "$HOME/.vim/snippets/django.snippets"
 
-
-#cd "$HOME/.vim/bundle/YouCompleteMe"
-#mkdir build
-#cd build
-#cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=OFF -DEXTERNAL_LIBCLANG_PATH=/usr/lib/libclang.so ../third_party/ycmd/cpp
-#make
-#make ycm_support_libs
+cd "$HOME/.vim/bundle/YouCompleteMe"
+./install.sh
 
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
 sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
