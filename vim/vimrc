@@ -65,6 +65,8 @@ Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 " Ag integration
 Bundle "rking/ag.vim"
+" Multi-cursor
+Bundle "terryma/vim-multiple-cursors"
 
 
 " ========================== ENCODINGS =========================
