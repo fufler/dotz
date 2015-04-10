@@ -69,6 +69,8 @@ Bundle "rking/ag.vim"
 Bundle "terryma/vim-multiple-cursors"
 " Side panel with outline view
 Bundle "majutsushi/tagbar"
+" Ruby sysntax highlighting and autocompletion
+Bundle 'vim-ruby/vim-ruby'
 
 
 " ========================== ENCODINGS =========================
