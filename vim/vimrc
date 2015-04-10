@@ -67,6 +67,8 @@ Bundle "honza/vim-snippets"
 Bundle "rking/ag.vim"
 " Multi-cursor
 Bundle "terryma/vim-multiple-cursors"
+" Side panel with outline view
+Bundle "majutsushi/tagbar"
 
 
 " ========================== ENCODINGS =========================
@@ -120,6 +122,7 @@ set pastetoggle=<C-P><C-P>                                       " hot key to to
 nmap <C-P><C-P> :CtrlPBuffer<CR>
 nmap <C-G><C-G> :CtrlPFunky<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
+nmap <C-Y><C-Y> :TagbarToggle<CR>
 nmap <Leader>jd :YcmCompleter GoTo<CR>
 nmap <C-D><C-D> :Dox<CR>
 imap <C-D><C-D> <Esc>:Dox<CR>
