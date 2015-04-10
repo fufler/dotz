@@ -266,5 +266,6 @@ endif
 let NERDTreeIgnore = ['\.pyc$']                                 " Ignore compiled python files
 
 " ================== CTRLP/FUNKY CONFIGURATION  ================
+let g:ctrlp_max_files=0
 let g:ctrlp_extensions = ['funky']                              " Enable funky extension
 let g:ctrlp_funky_syntax_highlight = 1                          " Enable syntax highlight
