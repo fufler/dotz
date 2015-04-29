@@ -41,7 +41,7 @@ sln "$DIR/vim/snipmate_for_django/snippets/htmldjango.snippets" "$HOME/.vim/snip
 sln "$DIR/vim/snipmate_for_django/snippets/django.snippets" "$HOME/.vim/snippets/django.snippets"
 
 cd "$HOME/.vim/bundle/YouCompleteMe"
-./install.sh
+./install.sh --clang-completer  --system-libclang  --omnisharp-completer  --gocode-completer  --system-boost
 
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
 sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
