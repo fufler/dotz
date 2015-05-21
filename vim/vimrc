@@ -114,12 +114,19 @@ set guifont=AnonymousPro\ 14
 
 
 
-" ======================== KEY BINDINGS ========================
+" ====================== LOCALE BINDINGS =======================
+set keymap=russian-jcukenwin                                     " fix to use russian symbols
+set iminsert=0                                                   " in non-insert modes
+set imsearch=0
+highlight lCursor guifg=NONE guibg=CornflowerBlue
 set langmap=ЬM,Б<,Ю>,Ё~,
 set langmap+=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,    " fix to use russian symbols
 set langmap+=рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,      " in non-insert modes
 set langmap+=ю.,ё`,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,
 set langmap+=ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\\",ЯZ,ЧX,СC,МV,ИB,ТN
+
+
+" ======================== KEY BINDINGS ========================
 set pastetoggle=<C-P><C-P>                                       " hot key to toggle paste mode
 nmap <C-P><C-P> :CtrlPBuffer<CR>
 nmap <C-G><C-G> :CtrlPFunky<CR>
@@ -143,8 +150,7 @@ set ignorecase                                                   " ignore case w
 set smartcase
 
 " ======================== SPELL CHECKER =======================
-setlocal spell spelllang=ru_ru,en_us                             " use spellchecker for russian and english, but disable by default
-set nospell
+setlocal spell spelllang=ru_yo,en_us                             " use spellchecker for russian and english, but disable by default
 
 
 " =============== HELPER FUNCTIONS AND COMMANDS ================
