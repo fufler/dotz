@@ -278,3 +278,10 @@ let g:ctrlp_funky_syntax_highlight = 1                          " Enable syntax 
 
 " =================== SESSIONS CONFIGURATION  ==================
 let g:session_autosave = 'no'
+
+" ================== LATEX SUITE CONFIGURATION  ================
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_CompileRule_pdf = 'lualatex --halt-on-error --output-directory %:p:h %'
+set wildignore+=*.log,*.aux,*.toc,*.out,*.tdo,*.pdf
+
+" au BufEnter *.tex syn clear texOnlyMath
