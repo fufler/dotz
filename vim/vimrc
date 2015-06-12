@@ -115,10 +115,6 @@ set guifont=AnonymousPro\ 14
 
 
 " ====================== LOCALE BINDINGS =======================
-set keymap=russian-jcukenwin                                     " fix to use russian symbols
-set iminsert=0                                                   " in non-insert modes
-set imsearch=0
-highlight lCursor guifg=NONE guibg=CornflowerBlue
 set langmap=ЬM,Б<,Ю>,Ё~,
 set langmap+=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,    " fix to use russian symbols
 set langmap+=рh,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ьm,б\\,,      " in non-insert modes
