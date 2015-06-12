@@ -82,7 +82,7 @@ set fileencodings=utf-8,windows-1251,iso-8859-15,koi8-r          " list of encod
 syntax enable                                                    " highlight syntax
 set autoread                                                     " automatically reload modified files
 set autoindent                                                   " inherit previous line indentation
-set cindent                                                      " use c-style indentation
+set smartindent                                                  " use smart indentation
 set showmatch                                                    " show matchings
 set matchpairs+=<:>                                              " show matching pairs for XML tags
 set nowrap                                                       " do not wrap lines
