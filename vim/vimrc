@@ -274,6 +274,7 @@ let g:ctrlp_funky_syntax_highlight = 1                          " Enable syntax 
 
 " =================== SESSIONS CONFIGURATION  ==================
 let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 
 " ================== LATEX SUITE CONFIGURATION  ================
 let g:Tex_DefaultTargetFormat = 'pdf'
