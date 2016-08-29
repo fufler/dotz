@@ -71,6 +71,8 @@ Bundle "terryma/vim-multiple-cursors"
 Bundle "majutsushi/tagbar"
 " Ruby syntax highlighting and autocompletion
 Bundle 'vim-ruby/vim-ruby'
+" Initialize new Vim buffers with file-type-specific templates
+Bundle 'noahfrederick/vim-skeleton'
 
 
 " ========================== ENCODINGS =========================
