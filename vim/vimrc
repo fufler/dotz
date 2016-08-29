@@ -175,6 +175,11 @@ function CompileAndRun()                                         " compiles curr
     !g++ /tmp/code_to_run.cpp -std=c++11 -Wall -o /tmp/a.out && /tmp/a.out
 endfunction
 
+function RunPython()                                             " executes current script using python interpreter
+    w
+    !python3 %
+endfunction
+
 function! s:insert_gates()                                       " inserts header file gate
     let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
     execute "normal! i#ifndef " . gatename
@@ -185,6 +190,7 @@ endfunction
 
 command RemoveTWS :call RemoveTrailingWhitespace()
 command CompileAndRun :call CompileAndRun()
+command RunPython :call RunPython()
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
