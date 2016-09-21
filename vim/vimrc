@@ -112,7 +112,7 @@ set numberwidth=3
 set showtabline=0                                                " do not show opened tabs
 set laststatus=2                                                 " show status line
 set noshowmode                                                   " disable default mode indication
-set guifont=AnonymousPro\ 14
+set guifont=Hack\ 14
 
 
 
