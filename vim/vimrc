@@ -73,6 +73,8 @@ Bundle "majutsushi/tagbar"
 Bundle 'vim-ruby/vim-ruby'
 " Initialize new Vim buffers with file-type-specific templates
 Bundle 'noahfrederick/vim-skeleton'
+" Easily edit RST tables
+Bundle 'nvie/vim-rst-tables'
 
 
 " ========================== ENCODINGS =========================
@@ -138,6 +140,7 @@ nmap <C-B> :call setqflist([])<CR>:make<CR>
 nmap <F2> :w<CR>
 nmap <F6> :cnext<CR>
 nmap <F7> :cprevious<CR>
+nmap <C-T><Enter> :call ReformatTable()<CR>
 
 
 
