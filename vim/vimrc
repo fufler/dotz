@@ -138,6 +138,7 @@ imap <C-D><C-D> <Esc>:Dox<CR>
 vmap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 nmap <C-B> :call setqflist([])<CR>:make<CR>
 nmap <F2> :w<CR>
+imap <F2> <ESC>:w<CR>a
 nmap <F6> :cnext<CR>
 nmap <F7> :cprevious<CR>
 nmap <C-T><Enter> :call ReformatTable()<CR>
