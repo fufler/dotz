@@ -4,3 +4,6 @@
 [submodule "gdbinit"]
 	path = gdbinit
 	url = https://github.com/gdbinit/Gdbinit.git
+[submodule "z"]
+	path = z
+	url = https://github.com/rupa/z
