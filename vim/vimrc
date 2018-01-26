@@ -32,8 +32,6 @@ Bundle 'a.vim'
 Bundle 'scrooloose/nerdtree'
 " Easy commenting
 Bundle 'scrooloose/nerdcommenter'
-" Clang-enabled autocompletion
-Bundle 'Valloric/YouCompleteMe'
 " Latex utils
 Bundle 'jcf/vim-latex'
 " On-the-fly syntax checking
@@ -69,12 +67,8 @@ Bundle "rking/ag.vim"
 Bundle "terryma/vim-multiple-cursors"
 " Side panel with outline view
 Bundle "majutsushi/tagbar"
-" Ruby syntax highlighting and autocompletion
-Bundle 'vim-ruby/vim-ruby'
 " Initialize new Vim buffers with file-type-specific templates
 Bundle 'noahfrederick/vim-skeleton'
-" Easily edit RST tables
-Bundle 'nvie/vim-rst-tables'
 
 
 " ========================== ENCODINGS =========================
