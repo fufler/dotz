@@ -37,14 +37,6 @@ mkdir -p "$HOME/.vim/snippets"
 sln "$DIR/vim/spell" "$HOME/.vim/spell"
 [[ ! -d "$HOME/.vim/bundle/vundle" ]] && git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
 vim +BundleInstall +wqa
-sln "$DIR/vim/snipmate_for_django/snippets/htmldjango.snippets" "$HOME/.vim/snippets/htmldjango.snippets"
-sln "$DIR/vim/snipmate_for_django/snippets/django.snippets" "$HOME/.vim/snippets/django.snippets"
-
-cd "$HOME/.vim/bundle/YouCompleteMe"
-python2 ./install.py --clang-completer  --system-libclang --system-boost
-
-cd "$HOME/.vim/bundle/vim-rst-tables/"
-python2 ./build.py
 
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
 sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
