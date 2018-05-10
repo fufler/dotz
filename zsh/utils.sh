@@ -69,3 +69,9 @@ format_xml() {
 	xmllint --pretty 1 "$1" > /tmp/formatted.xml
 	mv /tmp/formatted.xml "$1";
 }
+
+update_dotz() {
+    cd "$HOME/.dotz"
+    git pull && git submodule update --init --recursive
+    cd -
+}
