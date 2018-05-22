@@ -15,7 +15,7 @@ done
 
 
 mkdir -p "$HOME/.zsh"
-for file in zsh/*(.N); do
+for file in zsh/*; do
   sln "$DIR/$file" "$HOME/.zsh/${file:t}"
 done
 
