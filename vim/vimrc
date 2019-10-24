@@ -19,7 +19,8 @@ call vundle#rc()                                                 " initialize vu
 " Package manager
 Bundle 'gmarik/vundle.git'
 " Fancy status line
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 " Faster navigation
 Bundle 'Lokaltog/vim-easymotion'
 " Quickly open files and switch tabs
@@ -42,10 +43,6 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'summerfruit256.vim'
 " Git wrappings
 Bundle 'tpope/vim-fugitive'
-" XML tags autocompletion
-Bundle 'sukima/xmledit'
-" Automatically convert Java properties files to ASCII
-Bundle 'fufler/vim-unicodeswitch'
 " Syntax highlighting for Freemarker template files
 Bundle 'chaquotay/ftl-vim-syntax'
 " A handy plugin to manage sessions
@@ -126,7 +123,6 @@ nmap <C-P><C-P> :CtrlPBuffer<CR>
 nmap <C-G><C-G> :CtrlPFunky<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
 nmap <C-Y><C-Y> :TagbarToggle<CR>
-nmap <Leader>jd :YcmCompleter GoTo<CR>
 nmap <C-D><C-D> :Dox<CR>
 imap <C-D><C-D> <Esc>:Dox<CR>
 vmap <C-r> "hy:%s/<C-r>h//g<left><left><left>
@@ -197,56 +193,8 @@ autocmd BufNewFile,BufRead wscript set syntax=python
 " ====================== EVENT CALLBACKS =======================
 au BufWritePost * call ModeChange()                              " adjust flags for script files on save
 
-
-" ===================== YCM CONFIGURATION  =====================
-let g:ycm_confirm_extra_conf = 0                                 " do not confirm extra config loading
-let g:ycm_key_list_select_completion = []
-
-
-
 " =================== AIRLINE CONFIGURATION  ===================
-function! s:GenColors(s1, s2)
-  return {
-      \ 'airline_a'              : [ a:s1[0] , a:s1[1] , a:s1[2] , a:s1[3] , get(a:s1 , 4 , 'bold') ],
-      \ 'airline_b'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-      \ 'airline_c'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-      \ 'airline_file'           : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-      \ 'airline_x'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-      \ 'airline_y'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-      \ 'airline_z'              : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ],
-      \ 'airline_warning'        : [ a:s2[0] , a:s2[1] , a:s2[2] , a:s2[3] , get(a:s2 , 4 , ''    ) ]
-      \ }
-endfunction
-
-
-let s:S1N = ['', '', 16, 255, 'bold']
-let s:S1I = ['', '', 16, 12,  'bold']
-let s:S1R = ['', '', 16, 9,   '']
-let s:S1V = ['', '', 16, 11,  '']
-let s:S2  = ['', '', 16, 255, '']
-
-let g:airline#themes#summerfruit#palette = {
-  \ 'normal'           : s:GenColors(s:S1N, s:S2),
-  \ 'insert'           : s:GenColors(s:S1I, s:S2),
-  \ 'visual'           : s:GenColors(s:S1V, s:S2),
-  \ 'replace'          : s:GenColors(s:S1R, s:S2),
-  \ 'inactive'         : s:GenColors(s:S1R, s:S2),
-  \ 'normal_modified'  : s:GenColors(s:S1N, s:S2),
-  \ 'insert_modified'  : s:GenColors(s:S1I, s:S2),
-  \ 'visual_modified'  : s:GenColors(s:S1V, s:S2),
-  \ 'replace_modified' : s:GenColors(s:S1R, s:S2),
-  \ 'inactive_modified': s:GenColors(s:S1R, s:S2)
-  \ }
-
-let g:airline#themes#summerfruit#palette.normal_modified.airline_c   = [ '', '', 34, '', '' ]
-let g:airline#themes#summerfruit#palette.insert_modified.airline_c   = [ '', '', 34, '', '' ]
-let g:airline#themes#summerfruit#palette.visual_modified.airline_c   = [ '', '', 34, '', '' ]
-let g:airline#themes#summerfruit#palette.replace_modified.airline_c  = [ '', '', 34, '', '' ]
-let g:airline#themes#summerfruit#palette.inactive_modified.airline_c = [ '', '', 34, '', '' ]
-
-
-
-let g:airline_theme='summerfruit'                                " airline colorscheme
+let g:airline_theme='hybrid'                                " airline colorscheme
 let g:airline#extensions#syntastic#enabled = 1                   " enable syntastic integration for airline
 let g:airline#extensions#tabline#enabled = 1                     " enable wrapped tabline
 let g:airline_symbols = {}                                       " disable status line symbols
@@ -254,15 +202,6 @@ let g:airline_symbols = {}                                       " disable statu
 " ================== SYNTASTIC CONFIGURATION  ==================
 let g:syntastic_enable_signs=0
 let g:syntastic_enable_highlighting = 1
-
-" ================ UNICODESWITCH CONFIGURATION  ================
-let g:ucs_encode_java = 1
-
-" =============== DOXYGEN TOOLKIT CONFIGURATION ================
-let g:DoxygenToolkit_briefTag_pre = ''                           " don't use @brief tag
-
-" =================== XML EDIT CONFIGURATION ===================
-let g:xmledit_enable_html=1                                      " enable xml tag completions for htmls
 
 " ===================== MAKE CONFIGURATION =====================
 if filereadable('/proc/cpuinfo')                                " adjust number of parallel build jobs
@@ -286,5 +225,3 @@ let g:session_autoload = 'no'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'lualatex --halt-on-error --output-directory %:p:h %'
 set wildignore+=*.log,*.aux,*.toc,*.out,*.tdo,*.pdf
-
-" au BufEnter *.tex syn clear texOnlyMath
