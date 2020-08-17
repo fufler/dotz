@@ -15,3 +15,26 @@ function __sk_video2gif() {
     echo "\nUsage: video2gif <input> <output> <framerate>"
 }
 
+
+function audio2ac3 {
+    [[ $# < 2 ]] && __sk_audio2ac3 && return -1
+
+    if [[ -z "$3" ]]; then
+        br="1000k"
+    else
+        br="$3"
+    fi
+    
+    if [[ -z "$4" ]]; then
+        thr="5"
+    else
+        thr="$4"
+    fi
+
+    ffmpeg -i "$1" -map 0 -vcodec copy -scodec copy -acodec ac3 -b:a "$br" "$2"  -threads "$thr"
+}
+
+function __sk_audio2ac3() {
+    echo "Encodes audio tracks from video container with ac3"
+    echo "\nUsage: audio2ac3 <input> <output> [audio bitrate] [workers]"
+}
