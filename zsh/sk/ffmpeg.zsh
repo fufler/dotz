@@ -6,7 +6,7 @@ function video2gif {
     ffmpeg -y -i "$1" -vf palettegen "$tmp/palette.png" && \
     ffmpeg -y -i "$1" -i "$tmp/palette.png" -filter_complex paletteuse -r "$3" "$2"
 
-    rm -y "$tmp/palette.png"
+    rm -f "$tmp/palette.png"
     rmdir "$tmp"
 }
 
