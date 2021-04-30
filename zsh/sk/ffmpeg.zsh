@@ -38,3 +38,27 @@ function __sk_audio2ac3() {
     echo "Encodes audio tracks from video container with ac3"
     echo "\nUsage: audio2ac3 <input> <output> [audio bitrate] [workers]"
 }
+
+
+function video2mp4() {
+    [[ $# < 2 ]] && __sk_audio2ac3 && return -1
+
+    if [[ -z "$3" ]]; then
+        fr="24"
+    else
+        fr="$3"
+    fi
+    
+    if [[ -z "$4" ]]; then
+        thr="5"
+    else
+        thr="$4"
+    fi
+
+    ffmpeg -fflags +genpts -i "$1" -r "$fr" -threads "$thr" -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" "$2"
+}
+
+function __sk_video2mp4() {
+    echo "Converts video file to mp4 format"
+    echo "\nUsage: audio2ac3 <input> <output> [framerate] [workers]"
+}
