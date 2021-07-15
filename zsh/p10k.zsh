@@ -36,6 +36,14 @@
     prompt_char             # prompt symbol
   )
 
+  function prompt_warning() {
+      p10k segment -f red -t "⚠  ${P10K_WARNING} ⚠" -c "${P10K_WARNING}"
+  }
+
+  function instant_prompt_warning() {
+      prompt_warning
+  }
+
   # The list of segments shown on the right. Fill it with less important segments.
   # Right prompt on the last prompt line (where you are typing your commands) gets
   # automatically hidden when the input line reaches it. Right prompt above the
@@ -99,6 +107,7 @@
     # battery               # internal battery
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
+    warning
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
