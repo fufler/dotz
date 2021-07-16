@@ -36,12 +36,20 @@
     prompt_char             # prompt symbol
   )
 
-  function prompt_warning() {
-      p10k segment -f red -t "⚠  ${P10K_WARNING} ⚠" -c "${P10K_WARNING}"
+  function prompt_docker() {
+    [[ -z "$DOCKER_HOST" ]] && return
+
+    if [[ -z "$FORWARDED_DOCKER_HOST" ]]; then
+      host=$DOCKER_HOST;
+    else
+      host=$FORWARDED_DOCKER_HOST;
+    fi
+
+    p10k segment -f blue -i " " -t "$host"
   }
 
-  function instant_prompt_warning() {
-      prompt_warning
+  function instant_prompt_docker() {
+    prompt_docker
   }
 
   # The list of segments shown on the right. Fill it with less important segments.
@@ -107,7 +115,7 @@
     # battery               # internal battery
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
-    warning
+    docker
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
