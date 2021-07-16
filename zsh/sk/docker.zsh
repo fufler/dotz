@@ -52,3 +52,42 @@ function __sk_dcR() {
     echo 'Usage: dcR <options>'
     echo 'Example: dcR -f /a/b/c/docker-compose.yml -H host:2375'
 }
+
+
+function cleanup_forwarded_docker_socket() {
+    [[ -z "$FORWARDED_DOCKER_HOST" ]] && return
+    socket=${DOCKER_HOST:7}
+
+    fuser -k "$socket" &> /dev/null
+
+    rm -rf  $( dirname "$socket" )
+
+    unset FORWARDED_DOCKER_HOST DOCKER_HOST
+}
+
+function __sk_cleanup_forwarded_docker_socket() {
+    echo 'Cleans up forwarded Docker socket'
+    echo
+    echo 'Usage: cleanup_forwarded_docker_socket'
+}
+
+function forward_docker() {
+    cleanup_forwarded_docker_socket;
+
+    d=$( mktemp -d )
+    socket="$d/docker.sock"
+
+    ssh -fnNT -L "$socket:/var/run/docker.sock" "$1" &> /dev/null
+
+    export DOCKER_HOST="unix://$socket"
+    export FORWARDED_DOCKER_HOST="$1"
+}
+
+function __sk_forward_docker() {
+    echo 'Forwards Docker socket over SSH'
+    echo
+    echo 'Usage: forward_docker <host>'
+    echo 'Example: forward_docker user@docker.ho.st'
+}
+
+trap 'cleanup_forwarded_docker_socket' EXIT
