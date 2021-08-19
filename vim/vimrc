@@ -12,7 +12,7 @@ filetype plugin on                                               " load plugins 
 
 " ========================== PLUGINS  ==========================
 set rtp+=~/.vim/bundle/vundle/                                   " adjust runtime path
-call vundle#rc()                                                 " initialize vundle
+call vundle#begin()                                              " initialize vundle
 
 " Package manager
 Bundle 'gmarik/vundle.git'
@@ -33,12 +33,10 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'airblade/vim-gitgutter'
 " Fresh color scheme
 Bundle 'summerfruit256.vim'
-" Git wrappings
-Bundle 'tpope/vim-fugitive'
-" Ag integration
-Bundle "rking/ag.vim"
 " Multi-cursor
 Bundle "terryma/vim-multiple-cursors"
+
+call vundle#end()                                                " end vundle initialization
 
 
 " ========================== ENCODINGS =========================
@@ -95,17 +93,8 @@ set pastetoggle=<C-P><C-P>                                       " hot key to to
 nmap <C-P><C-P> :CtrlPBuffer<CR>
 nmap <C-G><C-G> :CtrlPFunky<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
-nmap <C-Y><C-Y> :TagbarToggle<CR>
-nmap <C-D><C-D> :Dox<CR>
-imap <C-D><C-D> <Esc>:Dox<CR>
-vmap <C-r> "hy:%s/<C-r>h//g<left><left><left>
-nmap <C-B> :call setqflist([])<CR>:make<CR>
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>a
-nmap <F6> :cnext<CR>
-nmap <F7> :cprevious<CR>
-nmap <C-T><Enter> :call ReformatTable()<CR>
-
 
 
 " =========================== SEARCH ===========================
@@ -125,14 +114,6 @@ function ModeChange()                                            " if first line
   endif
 endfunction
 
-function JumpToDefinitionElseDeclaration()                       " simple wrapper for Ycm function that prevents
-    if getbufvar(bufname(winbufnr(0)), '&modified')              " displaying of error message due to unsaved buffer
-        echoerr "Please, save changes before jumping."
-    else
-        YcmCompleter GoToeclarationElse
-    endif
-endfunction
-
 function RemoveTrailingWhitespace()                              " removes trailing whitespaces
     %s/[ \t]*$//g
 endfunction
@@ -147,40 +128,25 @@ function RunPython()                                             " executes curr
     !python3 %
 endfunction
 
-function! s:insert_gates()                                       " inserts header file gate
-    let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-    execute "normal! i#ifndef " . gatename
-    execute "normal! o#define " . gatename . " "
-    execute "normal! Go#endif /* " . gatename . " */"
-    normal! kk
-endfunction
-
 command RemoveTWS :call RemoveTrailingWhitespace()
 command CompileAndRun :call CompileAndRun()
 command RunPython :call RunPython()
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 autocmd BufNewFile,BufRead wscript set syntax=python
 
 " ====================== EVENT CALLBACKS =======================
 au BufWritePost * call ModeChange()                              " adjust flags for script files on save
 
 " =================== AIRLINE CONFIGURATION  ===================
-let g:airline_theme='hybrid'                                " airline colorscheme
+let g:airline_theme='hybrid'                                     " airline colorscheme
 let g:airline#extensions#syntastic#enabled = 1                   " enable syntastic integration for airline
 let g:airline#extensions#tabline#enabled = 1                     " enable wrapped tabline
-let g:airline_symbols = {}                                       " disable status line symbols
+let g:airline_powerline_fonts = 1
 
 " ================== SYNTASTIC CONFIGURATION  ==================
 let g:syntastic_enable_signs=0
 let g:syntastic_enable_highlighting = 1
-
-" ===================== MAKE CONFIGURATION =====================
-if filereadable('/proc/cpuinfo')                                " adjust number of parallel build jobs
-    let s:njobs = system('grep -c ^processor /proc/cpuinfo')+1
-    let &makeprg = 'make -j'.s:njobs
-endif
 
 " =================== NERDTREE CONFIGURATION  ==================
 let NERDTreeIgnore = ['\.pyc$']                                 " Ignore compiled python files
