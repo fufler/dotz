@@ -9,8 +9,6 @@ set wildignore+=*/build/*,*.so,*.swp,*.zip,*.o,*.pyc             " ignore binary
 set wildmode=list:full                                           " use regular shell-like autocompletion
 set shortmess+=I                                                 " disable startup message
 filetype plugin on                                               " load plugins basing on file type
-set exrc                                                         " enable secure load of external vimrc config
-set secure
 
 " ========================== PLUGINS  ==========================
 set rtp+=~/.vim/bundle/vundle/                                   " adjust runtime path
