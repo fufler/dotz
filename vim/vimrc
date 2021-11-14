@@ -36,6 +36,8 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'summerfruit256.vim'
 " Multi-cursor
 Bundle "terryma/vim-multiple-cursors"
+" Auto formatting
+Bundle 'Chiel92/vim-autoformat'
 
 call vundle#end()                                                " end vundle initialization
 
@@ -96,6 +98,7 @@ nmap <C-G><C-G> :CtrlPFunky<CR>
 nmap <C-T><C-T> :NERDTreeToggle<CR>
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>a
+noremap <F3> :Autoformat<CR>
 
 
 " =========================== SEARCH ===========================
