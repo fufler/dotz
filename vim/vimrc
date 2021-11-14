@@ -6,6 +6,7 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/                                       " store swap files in separate directory
 set suffixes+=.png,.gif,.jpg,.jpeg,.ico,.gz,.tgz,.zip            " ignore binary files when completing
 set wildignore+=*/build/*,*.so,*.swp,*.zip,*.o,*.pyc             " ignore binary files when expanding wildcards
+set wildignore+=.git/*,node_modules/*,target/*                   " ignore arbitrary directories when expanding wildcards
 set wildmode=list:full                                           " use regular shell-like autocompletion
 set shortmess+=I                                                 " disable startup message
 filetype plugin on                                               " load plugins basing on file type
