@@ -58,6 +58,8 @@ function cleanup_forwarded_docker_socket() {
     [[ -z "$FORWARDED_DOCKER_HOST" ]] && return
     socket=${DOCKER_HOST:7}
 
+    [[ ! -S "$socket" ]] && return
+
     fuser -k "$socket" &> /dev/null
 
     rm -rf  $( dirname "$socket" )
@@ -74,10 +76,31 @@ function __sk_cleanup_forwarded_docker_socket() {
 function forward_docker() {
     cleanup_forwarded_docker_socket;
 
+    parts=("${(@s/:/)1}")
+
+    if [[ ${#parts[@]} -gt 2 ]]; then
+        echo "Invalid address format $1"
+        return -1
+    fi
+
+    host=${parts[1]}
+
+    if [[ ${#parts[@]} -eq 1 ]]; then
+        port=22
+    else
+        port=${parts[2]}
+    fi
+
     d=$( mktemp -d )
     socket="$d/docker.sock"
 
-    ssh -fnNT -L "$socket:/var/run/docker.sock" "$1" &> /dev/null
+
+    ssh -p "$port" -fnNT -L "$socket:/var/run/docker.sock" "$host" &> /dev/null
+
+    if [[ $? -ne 0 ]]; then
+        echo "Failed to forward docker"
+        return -1
+    fi
 
     export DOCKER_HOST="unix://$socket"
     export FORWARDED_DOCKER_HOST="$1"
