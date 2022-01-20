@@ -10,7 +10,7 @@ function __sk_git_branch_diff() {
 }
 
 function git_branch_cleanup() {
-    git remote prune origin && git branch -r | awk '{ print $1 }' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{ print $1 }'   | xargs -p -n1 git branch -d
+    git remote prune origin && git branch -r | awk '{ print $1 }' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{ print $1 }'   | xargs -r -p -n1 git branch -D
 }
 
 function __sk_git_branch_cleanup() {
