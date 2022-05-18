@@ -95,15 +95,23 @@ function forward_docker() {
     socket="$d/docker.sock"
 
 
-    ssh -p "$port" -fnNT -L "$socket:/var/run/docker.sock" "$host" &> /dev/null
-
-    if [[ $? -ne 0 ]]; then
-        echo "Failed to forward docker"
-        return -1
-    fi
+   (ssh -p "$port" -nNT -L "$socket:/var/run/docker.sock" "$host" &> /dev/null &)
 
     export DOCKER_HOST="unix://$socket"
     export FORWARDED_DOCKER_HOST="$1"
+
+    sleep 1
+
+    docker info &> /dev/null
+
+
+    if [[ $? -ne 0 ]]; then
+        echo "Failed to forward docker"
+
+        cleanup_forwarded_docker_socket
+
+        return -1
+    fi
 }
 
 function __sk_forward_docker() {
