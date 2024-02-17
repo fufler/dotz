@@ -37,15 +37,12 @@
   )
 
   function prompt_docker() {
-    [[ -z "$DOCKER_HOST" ]] && return
+    docker_context=$( docker context show )
 
-    if [[ -z "$FORWARDED_DOCKER_HOST" ]]; then
-      host=$DOCKER_HOST;
-    else
-      host=$FORWARDED_DOCKER_HOST;
-    fi
+    [[ -z "$docker_context" ]] && return
+    [[ "$docker_context" = "default" ]] && return
 
-    p10k segment -f blue -i " " -t "$host"
+    p10k segment -f blue -i "" -t "$docker_context"
   }
 
   function instant_prompt_docker() {
