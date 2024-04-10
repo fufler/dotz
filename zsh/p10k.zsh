@@ -49,6 +49,16 @@
     prompt_docker
   }
 
+  function prompt_history() {
+    [[ ! -z "$HISTFILE" ]] && return
+
+    p10k segment -f green -i "🕵"
+  }
+
+  function instant_prompt_history() {
+    prompt_history
+  }
+
   # The list of segments shown on the right. Fill it with less important segments.
   # Right prompt on the last prompt line (where you are typing your commands) gets
   # automatically hidden when the input line reaches it. Right prompt above the
@@ -113,6 +123,7 @@
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
     docker
+    history
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
