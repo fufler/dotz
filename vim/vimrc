@@ -38,6 +38,11 @@ Bundle 'summerfruit256.vim'
 Bundle "terryma/vim-multiple-cursors"
 " Auto formatting
 Bundle 'Chiel92/vim-autoformat'
+" Dracula
+Plugin 'dracula/vim', { 'name': 'dracula' }
+" Lumen
+Plugin 'vimpostor/vim-lumen'
+
 
 call vundle#end()                                                " end vundle initialization
 
@@ -66,13 +71,13 @@ set hidden                                                       " do not unload
 
 " ========================= APPEARANCE =========================
 set t_Co=256                                                     " use 256 colors
-silent! colorscheme summerfruit256                               " use custom colorscheme
-set background=light
+set termguicolors
+let g:lumen_light_colorscheme = 'summerfruit256'                " light colorscheme
+let g:lumen_dark_colorscheme = 'dracula'                        " dark colorscheme
 hi! link SignColumn LineNr
 hi! link GitGutterAdd LineNr
 hi! link GitGutterChange LineNr
 hi! link GitGutterDelete LineNr
-hi! Pmenu ctermbg=194 ctermfg=black guibg=#d7ffd7 guifg=black
 set colorcolumn=120                                              " colored margin
 set number                                                       " show line numbers with 3 characters width
 set numberwidth=3
