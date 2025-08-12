@@ -46,3 +46,5 @@ sln "$DIR/ipython/ipython_config.py" "$HOME/.config/ipython/profile_default/ipyt
 
 sln "$DIR/screen/screenrc" "$HOME/.screenrc"
 sln "$DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+
+sln "$DIR/nvim" "$HOME/.config/nvim"
