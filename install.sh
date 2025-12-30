@@ -25,7 +25,7 @@ mkdir -p "$HOME/.config/mc"
 sln "$DIR/mc/ini" "$HOME/.config/mc/ini"
 
 mkdir -p "$HOME/.local/share/mc/skins"
-for sfile in mc/skins/*.ini(.N); do
+for sfile in mc/skins/*.ini(.N) mc/mc-dracula/skins/*.ini(.N); do
   sln "$DIR/$sfile" "$HOME/.local/share/mc/skins/${sfile:t}";
 done
 
