@@ -29,15 +29,6 @@ for sfile in mc/skins/*.ini(.N); do
   sln "$DIR/$sfile" "$HOME/.local/share/mc/skins/${sfile:t}";
 done
 
-sln "$DIR/vim/vimrc" "$HOME/.vimrc"
-mkdir -p "$HOME/.vim/bundle"
-mkdir -p "$HOME/.vim/swap"
-mkdir -p "$HOME/.vim/backup"
-mkdir -p "$HOME/.vim/snippets"
-sln "$DIR/vim/spell" "$HOME/.vim/spell"
-[[ ! -d "$HOME/.vim/bundle/vundle" ]] && git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
-vim +BundleInstall +wqa
-
 sln "$DIR/gdbinit/gdbinit" "$HOME/.gdbinit"
 sln "$DIR/gdbinit.local/gdbinit.local" "$HOME/.gdbinit.local"
 
