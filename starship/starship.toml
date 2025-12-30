@@ -1,0 +1,96 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](fg:s1_bg)\
+[$username ](bg:s1_bg fg:s1_fg)\
+[](bg:s2_bg fg:s1_bg)\
+[$directory](bg:s2_bg fg:s2_fg)\
+[](bg:s3_bg fg:s2_bg)\
+[$git_branch](bg:s3_bg fg:s3_fg)\
+[$git_status](bg:s3_bg fg:s3_fg)\
+[](fg:s3_bg bg:s4_bg)\
+[$python](bg:s4_bg fg:s4_fg)\
+[](fg:s4_bg bg:s5_bg)\
+[$docker_context](bg:s5_bg fg:s5_fg)\
+[](fg:s5_bg bg:s6_bg)\
+[$time](bg:s6_bg fg:s6_fg)\
+[ ](fg:s6_bg)\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'dracula'
+
+[username]
+show_always = true
+format = ' $user'
+
+[directory]
+format = " $path "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+format = ' $symbol $branch '
+
+[git_status]
+format = '$all_status$ahead_behind'
+
+[python]
+symbol = ""
+format = ' $symbol( $version)(\(#$virtualenv\))' 
+
+[docker_context]
+symbol = ""
+format = ' $symbol( $context) '
+only_with_files = false
+
+[time]
+disabled = false
+time_format = "%R"
+format = '  $time '
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:s4_bg)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:s4_bg)'
+vimcmd_replace_one_symbol = '[❮](bold fg:orange)'
+vimcmd_replace_symbol = '[❮](bold fg:orange)'
+vimcmd_visual_symbol = '[❮](bold fg:s6_bg)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.dracula]
+s1_bg = "#ff79c6"
+s1_fg = "#282a36"
+
+s2_bg = "#6272a4"
+s2_fg = "#282a36"
+
+s3_bg = "#bd93f9"
+s3_fg = "#282a36"
+
+s4_bg = "#8be9fd"
+s4_fg = "#282a36"
+
+s5_bg = "#f1fa8c"
+s5_fg = "#282a36"
+
+s6_bg = "#ffb86c"
+s6_fg = "#282a36"
+
+# #ff5555
+# #ffb86c
+# #282a36
+# #44475a
+# #f8f8f2
