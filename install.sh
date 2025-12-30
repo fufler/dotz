@@ -38,6 +38,10 @@ mkdir -p "$HOME/.config/ipython/profile_default"
 sln "$DIR/ipython/ipython_config.py" "$HOME/.config/ipython/profile_default/ipython_config.py"
 
 sln "$DIR/screen/screenrc" "$HOME/.screenrc"
+
+mkdir -p "$HOME/.tmux/plugins"
 sln "$DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+sln "$DIR/tmux/tpm" "$HOME/.tmux/plugins/tpm"
+
 
 sln "$DIR/nvim" "$HOME/.config/nvim"

@@ -13,3 +13,6 @@
 [submodule "mc/midnight-commander"]
 	path = mc/mc-dracula
 	url = https://github.com/dracula/midnight-commander
+[submodule "tmux/tpm"]
+	path = tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
