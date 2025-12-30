@@ -8,7 +8,7 @@
 	path = z
 	url = https://github.com/rupa/z
 [submodule "zsh/zsh-syntax-highlighting"]
-	path = zsh/zsh-syntax-highlighting
+	path = zsh/zshsh-dracula
 	url = https://github.com/dracula/zsh-syntax-highlighting.git
 [submodule "mc/midnight-commander"]
 	path = mc/mc-dracula
