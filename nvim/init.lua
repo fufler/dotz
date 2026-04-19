@@ -15,8 +15,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.lazyvim_check_order = false
-
 -- validate that lazy is available
 if not pcall(require, "lazy") then
   -- stylua: ignore
