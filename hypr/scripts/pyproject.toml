@@ -1,0 +1,8 @@
+[project]
+name = "custom-hypr-scripts"
+version = "0.1.0"
+dependencies = [
+    "dbus-next>=0.2.3",
+]
+
+venv=".venv"

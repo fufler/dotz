@@ -55,3 +55,5 @@ for d in themes/*; do
 done
 
 sln "$DIR/kitty" "$HOME/.config/kitty"
+
+sln "$DIR/hypr" "$HOME/.config/hypr"
