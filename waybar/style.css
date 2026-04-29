@@ -1,0 +1,128 @@
+* {
+  padding: 0;
+  margin: 0;
+
+  min-height: 0px;
+
+  font-family: "FiraCode Nerd Font";
+
+  background-color: transparent;
+}
+
+window#waybar {
+  background-color: #282a36;
+    box-shadow: 10px 3px 5px rgba(255, 0, 0, 1);
+  margin-bottom: 10px;
+}
+
+#workspaces  {
+  font-size: 14px;
+  padding: 0px 16px;
+}
+
+#workspaces button {
+	border-radius: 20px;
+	margin: 0 2px; 
+
+	padding: 0 4px;
+  
+  font-weight: 500;
+  font-size: 12px;
+
+  color: #f8f8f2;
+
+  transition-property: background-color, min-width;
+  transition-duration: .4s;
+}
+
+#workspaces button:not(.empty) {
+  background-color: #6272a4;
+  color: #f8f8f2;
+}
+
+
+#workspaces button.active {
+  background-color: #ffb86c;
+  color: #282a36 ;
+
+  min-width: 48px;
+}
+
+tooltip {
+  background-color: #44475a ;
+}
+
+#clock {
+  padding: 0px 8px;
+  padding: 0px 16px;
+  border-radius: 20px;
+}
+
+#language, #hardware, #switches, #tray, #audio, #privacy, #net, #custom-notifications {
+  border-right: solid 2px #44475a;
+}
+
+#language, #hardware, #switches, #tray, #audio, #privacy, #net, #custom-notifications, #clock, #workspaces {
+  margin: 4px 0px;
+}
+
+#custom-notifications {
+  padding-left: 8px;
+  padding-right: 12px;
+}
+
+#language, #hardware, #switches, #clock, #audio, #net {
+  font-weight: 700;
+}
+
+#hardware {
+  font-size: 14px;
+  padding-right: 16px;
+}
+
+#temperature.critical {
+  color: #ffb86c;
+}
+
+#hardware label {
+  padding-left: 12px;
+}
+
+#audio {
+  padding-left: 4px;
+  padding-right: 12px;
+}
+
+#audio label {
+  padding-left: 8px
+}
+
+#switches label {
+  padding-left: 6px;
+}
+
+#switches {
+  padding-left: 6px;
+  padding-right: 10px;
+}
+
+#language, #privacy {
+  padding: 0 16px;
+}
+
+#tray {
+  padding: 0 12px;
+}
+
+#net {
+  padding-left: 10px;
+  padding-right: 6px;
+}
+
+#custom-vpn {
+  padding-right: 8px;
+}
+
+#bluetooth {
+  padding-right: 8px;
+}

@@ -1,0 +1,230 @@
+{
+    "layer": "top",
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "group/hardware",
+        "group/net",
+        "group/audio",
+        "hyprland/language",
+        "tray",
+        "privacy",
+        "group/switches",
+        "custom/notifications"
+    ],
+    // workspaces
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "term": " "
+        },
+        "ignore-workspaces": [
+            "special:overlay-.+"
+        ],
+        "sort-by": "id",
+        "show-special": true
+    },
+    //
+    // clock
+    "clock": {
+        "format": "󰥔 {:%H:%M}",
+        "format-alt": "{:L%R (%A, %d %B, %Y)}  ",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 4,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#f1fa8c'><b>{}</b></span>",
+                "days": "<span color='#f8f8f2'><b>{}</b></span>",
+                "weeks": "<span color='#50fa7b'><b>{}</b></span>",
+                "weekdays": "<span color='#ffb86c'><b>{}</b></span>",
+                "today": "<span color='#ff79c6'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
+    },
+    //
+    // hardware
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "temperature",
+            "cpu",
+            "memory",
+            "battery"
+        ]
+    },
+    "temperature": {
+        "format": "{temperatureC:>3}°",
+        "critical-threshold": 90
+    },
+    "memory": {
+        "interval": 30,
+        "format": "{percentage:>3}%"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{usage:>3}%",
+        "max-length": 10
+    },
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "max-length": 25
+    },
+    // network
+    "group/net": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/vpn",
+            "network"
+        ]
+    },
+    "custom/vpn": {
+        "format": " ",
+        "exec": "~/.config/waybar/scripts/detect-vpn.py",
+        "return-type": "json",
+        "hide-empty-text": true,
+        "signal": 1
+    },
+    "network": {
+        "format-wifi": "󰖩 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰅛 ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
+        "max-length": 50,
+        "on-click": "~/.config/rofi/hyprltm-net/hyprltm-net.sh"
+    },
+    //
+    // audio
+    "group/audio": {
+        "orientation": "horizontal",
+        "modules": [
+            "bluetooth",
+            "wireplumber"
+        ]
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "rofi-bluetooth"
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " ",
+        "on-click": "rofi-mixer",
+        "max-volume": 100,
+        "scroll-step": 5,
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    //
+    // keyboard layout
+    "hyprland/language": {
+        "format": "{}",
+        "format-ru": "󰌌 RU",
+        "format-en": "󰌌 EN"
+    },
+    //
+    // tray
+    "tray": {
+        "spacing": 8
+    },
+    "privacy": {
+        "icon-spacing": 8,
+        "icon-size": 14,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ],
+        "ignore-monitor": true
+    },
+    //
+    // switches
+    "group/switches": {
+        "orientation": "horizontal",
+        "modules": [
+            "power-profiles-daemon",
+            "idle_inhibitor"
+        ]
+    },
+    "power-profiles-daemon": {
+        "format": "{icon} ",
+        "tooltip-format": "{profile}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon} ",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲"
+        }
+    },
+    //
+    // notifications
+    "custom/notifications": {
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂜",
+            "dnd-notification": "󰂠",
+            "dnd-none": "󰪓",
+            "inhibited-notification": "󰂛",
+            "inhibited-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    }
+}

@@ -57,3 +57,5 @@ done
 sln "$DIR/kitty" "$HOME/.config/kitty"
 
 sln "$DIR/hypr" "$HOME/.config/hypr"
+
+sln "$DIR/waybar" "$HOME/.config/waybar"
