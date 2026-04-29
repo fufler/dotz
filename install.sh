@@ -48,3 +48,8 @@ sln "$DIR/tmux/tpm" "$HOME/.tmux/plugins/tpm"
 sln "$DIR/nvim" "$HOME/.config/nvim"
 
 sln "$DIR/rofi" "$HOME/.config/rofi"
+
+mkdir -p "$HOME/.themes"
+for d in themes/*; do
+  sln "$DIR/$d" "$HOME/.themes/${d:t}";
+done
