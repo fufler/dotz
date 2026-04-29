@@ -1,0 +1,22 @@
+@import "~/.config/rofi/dracula-custom.rasi"
+
+configuration {
+  show-icons: true;
+
+  drun {
+    display-name: " ";
+  }
+
+  workspace {
+    display-name: "🗗 ";
+  }
+  
+  window {
+    display-name: "🗔  ";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}

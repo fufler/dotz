@@ -45,3 +45,5 @@ sln "$DIR/tmux/tpm" "$HOME/.tmux/plugins/tpm"
 
 
 sln "$DIR/nvim" "$HOME/.config/nvim"
+
+sln "$DIR/rofi" "$HOME/.config/rofi"

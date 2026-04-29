@@ -16,3 +16,6 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "rofi/hyprltm-net"]
+	path = rofi/hyprltm-net
+	url = https://github.com/hyprltm/hyprltm-net.git

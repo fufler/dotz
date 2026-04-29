@@ -1,0 +1,5 @@
+@import "/usr/share/rofi/themes/dracula2.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font Propo, 12";
+}
