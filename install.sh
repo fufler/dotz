@@ -21,6 +21,7 @@ done
 
 sln "$DIR/prezto" "$HOME/.zprezto"
 
+mkdir -p "$HOME/.config/"
 sln "$DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 
 mkdir -p "$HOME/.config/mc"
