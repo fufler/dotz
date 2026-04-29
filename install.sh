@@ -53,3 +53,5 @@ mkdir -p "$HOME/.themes"
 for d in themes/*; do
   sln "$DIR/$d" "$HOME/.themes/${d:t}";
 done
+
+sln "$DIR/kitty" "$HOME/.config/kitty"
