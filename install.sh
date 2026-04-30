@@ -59,3 +59,5 @@ sln "$DIR/kitty" "$HOME/.config/kitty"
 sln "$DIR/hypr" "$HOME/.config/hypr"
 
 sln "$DIR/waybar" "$HOME/.config/waybar"
+
+sln "$DIR/gtk/gtk-4.0" "$HOME/.config/gtk-4.0"

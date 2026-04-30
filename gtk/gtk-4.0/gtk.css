@@ -1,0 +1,4 @@
+@media (prefers-color-scheme: dark) {
+  @import url("./gtk-dark.css")
+}
+@import 'colors.css';
