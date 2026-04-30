@@ -7,7 +7,9 @@
         "clock"
     ],
     "modules-right": [
-        "group/hardware",
+        "group/temperatures",
+        "group/performance",
+        "group/power",
         "group/net",
         "group/audio",
         "hyprland/language",
@@ -16,11 +18,55 @@
         "group/switches",
         "custom/notifications"
     ],
-    // workspaces
+    "group/temperatures": {
+        "orientation": "horizontal",
+        "modules": [
+            "temperature#cpu",
+            "custom/fan"
+            // "temperature#gpu",
+        ]
+    },
+    "group/performance": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "memory",
+        ]
+    },
+    "group/power": {
+        "orientation": "horizontal",
+        "modules": [
+            "battery",
+            "power-profiles-daemon"
+        ]
+    },
+    "group/net": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/vpn",
+            "network"
+        ]
+    },
+    "group/audio": {
+        "orientation": "horizontal",
+        "modules": [
+            "bluetooth",
+            "wireplumber"
+        ]
+    },
+    "group/switches": {
+        "orientation": "horizontal",
+        "modules": [
+            "idle_inhibitor",
+            "custom/colorscheme"
+        ]
+    },
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "term": " "
+            "term": "",
+            "empty": "",
+            "default": ""
         },
         "ignore-workspaces": [
             "special:overlay-.+"
@@ -28,12 +74,11 @@
         "sort-by": "id",
         "show-special": true
     },
-    //
-    // clock
     "clock": {
         "format": "󰥔 {:%H:%M}",
-        "format-alt": "{:L%R (%A, %d %B, %Y)}  ",
+        "format-alt": "{:L%R (%A, %d %B, %Y)} ",
         "tooltip-format": "<tt>{calendar}</tt>",
+        "cursor": false,
         "calendar": {
             "mode": "year",
             "mode-mon-col": 4,
@@ -53,29 +98,28 @@
             "on-scroll-down": "shift_up"
         }
     },
-    //
-    // hardware
-    "group/hardware": {
-        "orientation": "horizontal",
-        "modules": [
-            "temperature",
-            "cpu",
-            "memory",
-            "battery"
-        ]
-    },
-    "temperature": {
+    "temperature#cpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
         "format": "{temperatureC:>3}°",
         "critical-threshold": 90
     },
+    "temperature#gpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+        "format": "{temperatureC:>3}°",
+        "critical-threshold": 100
+    },
     "memory": {
-        "interval": 30,
+        "interval": 10,
         "format": "{percentage:>3}%"
     },
     "cpu": {
         "interval": 10,
         "format": "{usage:>3}%",
-        "max-length": 10
+    },
+    "custom/fan": {
+        "exec": "cat /sys/class/hwmon/hwmon5/fan1_input",
+        "interval": 5,
+        "format": "󰈐 {} RPM"
     },
     "battery": {
         "interval": 60,
@@ -83,7 +127,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}{capacity:>3}%",
         "format-icons": [
             "",
             "",
@@ -93,42 +137,27 @@
         ],
         "max-length": 25
     },
-    // network
-    "group/net": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/vpn",
-            "network"
-        ]
-    },
     "custom/vpn": {
-        "format": " ",
+        "format": "",
         "exec": "~/.config/waybar/scripts/detect-vpn.py",
         "return-type": "json",
         "hide-empty-text": true,
         "signal": 1
     },
     "network": {
+        "cursor": false,
         "format-wifi": "󰖩 {essid} ({signalStrength}%)",
-        "format-ethernet": "󰈀 ",
-        "format-disconnected": "󰅛 ",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰅛",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
         "max-length": 50,
         "on-click": "~/.config/rofi/hyprltm-net/hyprltm-net.sh"
     },
-    //
-    // audio
-    "group/audio": {
-        "orientation": "horizontal",
-        "modules": [
-            "bluetooth",
-            "wireplumber"
-        ]
-    },
     "bluetooth": {
+        "cursor": false,
         "format": " {status}",
-        "format-connected": " {device_alias}",
+        "format-connected": "{device_alias}",
         "format-connected-battery": " {device_alias} {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -137,8 +166,9 @@
         "on-click": "rofi-bluetooth"
     },
     "wireplumber": {
+        "cursor": false,
         "format": "{icon} {volume}%",
-        "format-muted": " ",
+        "format-muted": "",
         "on-click": "rofi-mixer",
         "max-volume": 100,
         "scroll-step": 5,
@@ -148,15 +178,11 @@
             ""
         ]
     },
-    //
-    // keyboard layout
     "hyprland/language": {
         "format": "{}",
         "format-ru": "󰌌 RU",
         "format-en": "󰌌 EN"
     },
-    //
-    // tray
     "tray": {
         "spacing": 8
     },
@@ -178,17 +204,9 @@
         ],
         "ignore-monitor": true
     },
-    //
-    // switches
-    "group/switches": {
-        "orientation": "horizontal",
-        "modules": [
-            "power-profiles-daemon",
-            "idle_inhibitor"
-        ]
-    },
     "power-profiles-daemon": {
-        "format": "{icon} ",
+        "cursor": false,
+        "format": "{icon}",
         "tooltip-format": "{profile}",
         "tooltip": true,
         "format-icons": {
@@ -199,14 +217,20 @@
         }
     },
     "idle_inhibitor": {
-        "format": "{icon} ",
+        "format": "{icon}",
         "format-icons": {
             "activated": "󰒳",
             "deactivated": "󰒲"
         }
     },
-    //
-    // notifications
+    "custom/colorscheme": {
+        "interval": 60,
+        "format": "{icon}",
+        "exec": "~/.config/waybar/scripts/toggle-colorscheme.sh",
+        "format-icons": ["", ""],
+        "return-type": "json",
+        "on-click": "~/.config/waybar/scripts/toggle-colorscheme.sh toggle",
+    },
     "custom/notifications": {
         "tooltip": true,
         "format": "{icon}",
