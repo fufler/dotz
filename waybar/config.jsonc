@@ -64,9 +64,13 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "term": "",
-            "empty": "",
-            "default": ""
+            "term": "",
+            "empty": "",
+            "default": "",
+            "1": "",
+            "2": "󰖟",
+            "3": "󰻞",
+            "4": ""
         },
         "ignore-workspaces": [
             "special:overlay-.+"

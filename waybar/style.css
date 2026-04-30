@@ -17,8 +17,9 @@ window#waybar {
 }
 
 #workspaces button {
-	border-radius: 20px;
-  font-size: 24px;
+  font-size: 18px;
+
+  margin-right: 8px;
 
   transition-property: color;
   transition-duration: 0.4s;
