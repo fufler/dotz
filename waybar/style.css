@@ -1,10 +1,9 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-shadow: unset;
+  all: unset;
+}
 
+* {
   font-family: "FiraCode Nerd Font Propo";
-  font-weight: 700;
 }
 
 window#waybar {
@@ -37,7 +36,8 @@ window#waybar {
 }
 
 tooltip {
-  border-color: #6272a4  ;
+  border: solid 1px #6272a4;
+  border-radius: 8px;
   background-color: #282a36;
 }
 
@@ -55,6 +55,11 @@ tooltip {
   border-right: solid 2px #44475a;
   margin-top: 8px;
   margin-bottom: 8px;
+  font-weight: 700;
+}
+
+#clock {
+  font-weight: 700;
 }
 
 #performance widget > label,
@@ -93,4 +98,12 @@ tooltip {
 
 #temperature.critical {
   color: #ffb86c;
+}
+
+#battery.warning {
+  color: #ffb86c;
+}
+
+#battery.critical {
+  color: #ff5555;
 }
