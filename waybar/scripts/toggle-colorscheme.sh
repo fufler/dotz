@@ -14,8 +14,10 @@ fi
 
 if [[ "$colorscheme" == "prefer-dark" ]]; then
   p="0"
+  t="Dark"
 else
   p="100"
+  t="Light"
 fi
 
-echo "{\"text\": \"$colorscheme\", \"percentage\": $p }"
+echo "{\"text\": \"$colorscheme\", \"percentage\": $p, \"tooltip\": \"$t\" }"
