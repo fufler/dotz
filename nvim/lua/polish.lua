@@ -4,7 +4,7 @@ local function apply_theme(force)
     if (force or vim.v.option_old == "light") and vim.o.background == "dark" then
       vim.cmd("colorscheme dracula")
     elseif (force or vim.v.option_old == "dark") and vim.o.background == "light" then
-      vim.cmd("colorscheme astrolight")
+      vim.cmd("colorscheme dayfox")
     end
 end
 
