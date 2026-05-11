@@ -107,3 +107,14 @@ tooltip {
 #battery.critical {
   color: #ff5555;
 }
+
+#tray menu {
+  padding: 8px 12px;
+  border: solid 1px #6272a4;
+  border-radius: 8px;
+  background-color: #282a36;
+}
+
+#tray menu menuitem:hover {
+  color: #ff79c6;
+}
