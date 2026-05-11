@@ -15,3 +15,5 @@ vim.api.nvim_create_autocmd("OptionSet", {
 
 apply_theme(true)
 
+
+ vim.opt.spelllang = { "ru_yo", "en_us" } 
